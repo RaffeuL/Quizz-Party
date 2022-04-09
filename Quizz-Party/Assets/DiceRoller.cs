@@ -7,7 +7,7 @@ public class DiceRoller : MonoBehaviour
 {
     public int[] DiceValues;
     public int DiceTotal;
-
+    
     public int DoubleDice;
 
     public bool isrolling = false;
@@ -37,6 +37,7 @@ public class DiceRoller : MonoBehaviour
             transform.GetComponent<Image>().sprite = spriteArray[value-1];
             DiceTotal += value; 
         }
+       
 
         //Debug.Log("Valor para andar:" + DiceTotal);
         
