@@ -38,7 +38,6 @@ public class PlayerPiece : MonoBehaviour
             yield break;
         }
         isMoving = true;
-        Debug.Log("olha quantos passos tem mano: " + steps);
         while(steps > 0)
         {
             Vector3 nextPos = currentRoute.childTileList[routePosition + 1].position;
@@ -48,10 +47,8 @@ public class PlayerPiece : MonoBehaviour
             steps--;
             routePosition++;
         }
-        Debug.Log("Cabo de andar");
         
         isMoving = false;
-        //DiceCheckZoneScript.isFrozzen = false;
     }
 
     bool MoveToNextTile(Vector3 goal)

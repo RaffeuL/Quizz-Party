@@ -19,7 +19,6 @@ public class DiceCheckZoneScript : MonoBehaviour
 
         if(diceVelocity.x == 0f && diceVelocity.y == 0f && diceVelocity.z == 0f)
         {
-            Debug.Log("Mano ta parado? : " + isFrozzen);
             switch(col.gameObject.name)
             {
                 case "Side1":
@@ -50,7 +49,6 @@ public class DiceCheckZoneScript : MonoBehaviour
             if(!isFrozzen)
             {
                 PlayerPiece.canMove = true;
-                Debug.Log("Já foi agr ta verdadeiro pra parado wtf");
                 isFrozzen = true;
             }
         }
