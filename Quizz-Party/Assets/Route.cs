@@ -5,7 +5,10 @@ using UnityEngine;
 public class Route : MonoBehaviour
 {
     Transform[] childObjects;
-    public List<Transform> childTileList = new List<Transform>();
+    Renderer[] tilesRender;
+    public List<Transform> childTileTransformList = new List<Transform>();
+
+    public List<Renderer> childTileColorList = new List<Renderer>();
 
     void OnDrawGizmos()
     {
@@ -13,13 +16,13 @@ public class Route : MonoBehaviour
 
         FillNodes();
 
-        for (int i = 0; i < childTileList.Count; i++)
+        for (int i = 0; i < childTileTransformList.Count; i++)
         {
              
-            Vector3 currentPos = childTileList[i].position;
+            Vector3 currentPos = childTileTransformList[i].position;
             if(i > 0)
             {
-                Vector3 prevPos = childTileList[i - 1].position;
+                Vector3 prevPos = childTileTransformList[i - 1].position;
                 Gizmos.DrawLine(prevPos, currentPos);
             }
         }
@@ -27,16 +30,25 @@ public class Route : MonoBehaviour
 
     void FillNodes()
     {
-        childTileList.Clear();
-
+        //Fill Nodes with Transform typeof objects
+        childTileTransformList.Clear();
         childObjects = GetComponentsInChildren<Transform>();
 
         foreach (Transform child in childObjects)
         {
             if(child != this.transform)
             {
-                childTileList.Add(child);
+                childTileTransformList.Add(child);
             }
+        }
+
+        //Fill Nodes with Renderer typeof objects
+        childTileColorList.Clear();
+        tilesRender = GetComponentsInChildren<Renderer>();
+        
+        foreach (Renderer child in tilesRender)
+        {
+            childTileColorList.Add(child);
         }
     }
 }

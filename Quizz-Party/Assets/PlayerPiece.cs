@@ -40,7 +40,7 @@ public class PlayerPiece : MonoBehaviour
         isMoving = true;
         while(steps > 0)
         {
-            Vector3 nextPos = currentRoute.childTileList[routePosition + 1].position;
+            Vector3 nextPos = currentRoute.childTileTransformList[routePosition + 1].position;
             while(MoveToNextTile(nextPos)){yield return null;}
 
             yield return new WaitForSeconds(0.1f);
