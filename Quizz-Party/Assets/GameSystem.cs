@@ -14,7 +14,7 @@ public class GameSystem : MonoBehaviour
 
     void Start()
     {
-
+        CreateQuizzTiles();
     }
     // Update is called once per frame
     void Update()
@@ -22,7 +22,9 @@ public class GameSystem : MonoBehaviour
         
     }
     public void CreateQuizzTiles()
-    {
+    {   
+
+        coloredTiles.Clear();
         int tilesCount = 0;
         int tileIndex;
         int maxTiles =  currentRoute.childTileColorList.Count;

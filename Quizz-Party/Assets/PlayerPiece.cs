@@ -20,6 +20,7 @@ public class PlayerPiece : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            CheckTile();
             dice.RollTheDice();
         }
 
@@ -56,4 +57,24 @@ public class PlayerPiece : MonoBehaviour
         return goal != (transform.position = Vector3.MoveTowards(transform.position, goal, 2f * Time.deltaTime));
     }
     
+    void CheckTile()
+    {
+        Color tileColor = currentRoute.childTileColorList[routePosition].material.color;
+    
+        if(tileColor == Color.green)
+        {
+            Debug.Log("Verde");
+        }
+
+        if(tileColor == Color.yellow)
+        {
+            Debug.Log("Amarelo");
+        }
+
+        if(tileColor == Color.red)
+        {
+            Debug.Log("Vermelho");
+        }
+        
+    }
 }
