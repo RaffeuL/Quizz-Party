@@ -61,19 +61,25 @@ public class PlayerPiece : MonoBehaviour
     {
         Color tileColor = currentRoute.childTileColorList[routePosition].material.color;
     
+        //Pergunta Fácil
         if(tileColor == Color.green)
         {
-            Debug.Log("Verde");
+            QuizzManagement.GetEasyRandomQuestion();
+            QuizzManagement.ShowQuizz();
         }
 
+        //Pergunta Média
         if(tileColor == Color.yellow)
         {
-            Debug.Log("Amarelo");
+            QuizzManagement.GetMediumRandomQuestion();
+            QuizzManagement.ShowQuizz();
         }
 
+        //Pergunta Dificil
         if(tileColor == Color.red)
         {
-            Debug.Log("Vermelho");
+            QuizzManagement.GetHardRandomQuestion();
+            QuizzManagement.ShowQuizz();
         }
         
     }

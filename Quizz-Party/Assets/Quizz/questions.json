@@ -1,0 +1,157 @@
+{
+    "easy":
+    [
+        {
+            "question": "O que é um Switch?",
+            "answers":
+            [
+                {
+                    "answer":"Não sei"
+                },
+                {
+
+                    "answer":"Um switch é um dispositivo que simplesmente conecta todos os elementos da sua rede."
+                },
+                {
+                    
+                    "answer":"Cabo de conexão"
+                },
+                {
+                    "answer":"Um console da Nintendo"
+                }
+            ],
+    
+            "correct": 2
+        },
+
+        {
+            "question": "Pergunta Fácil 2",
+            "answers":
+            [
+                {
+                    "answer":"a"
+                },
+                {
+
+                    "answer":"b"
+                },
+                {
+                    
+                    "answer":"c"
+                },
+                {
+                    "answer":"d"
+                }
+            ],
+    
+            "correct": 3
+        }
+    ],
+
+    "medium":
+    [
+        {
+            "question": "Pergunta Média",
+            "answers":
+            [
+                {
+                    "answer":"a"
+                },
+                {
+
+                    "answer":"b"
+                },
+                {
+                    
+                    "answer":"c"
+                },
+                {
+                    "answer":"d"
+                }
+            ],
+    
+            "correct": 0
+        }
+    ],
+
+    "hard":
+    [
+        {
+            "question": "Pergunta Dificil",
+            "answers":
+            [
+                {
+                    "answer":"a"
+                },
+                {
+
+                    "answer":"b"
+                },
+                {
+                    
+                    "answer":"c"
+                },
+                {
+                    "answer":"d"
+                }
+            ],
+    
+            "correct": 1
+        }
+    ],
+
+    "questions":
+    [
+        {
+            "question": "O que é um Switch?",
+            "answer_1":"Não sei",
+            "answer_2":"Um switch é um dispositivo que simplesmente conecta todos os elementos da sua rede.",
+            "answer_3":"Cabo de conexão",
+            "answer_4":"Um console da Nintendo",
+    
+            "correct": "answer_3"
+        },
+            
+        {
+            "question": "Pergunta 2",
+            "answer_1":"a",
+            "answer_2":"b",
+            "answer_3":"c",
+            "answer_4":"d",
+    
+            "correct": "answer_2"
+        },
+    
+        {
+            "question": "Pergunta 3",
+            "answer-1":"a",
+            "answer-2":"b",
+            "answer-3":"c",
+            "answer-4":"d",
+    
+            "correct": "answer_3"
+        },
+    
+        {
+            "question": "Pergunta 4",
+            "answer_1":"a",
+            "answer_2":"b",
+            "answer_3":"c",
+            "answer_4":"d",
+    
+            "correct": "answer_4"
+        },
+    
+        {
+            "question": "Pergunta 5",
+            "answer_1":"a",
+            "answer_2":"b",
+            "answer_3":"c",
+            "answer_4":"d",
+    
+            "correct": "answer_1"
+        }  
+    ]
+      
+
+}
