@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 
 public class QuizzManagement : MonoBehaviour
@@ -11,6 +12,14 @@ public class QuizzManagement : MonoBehaviour
     private static List<Question> hardQuestionsNotUsed;
 
     private static Question currentQuestion;
+
+    public Text questionText;
+    public Text answer1;
+    public Text answer2;
+    public Text answer3;
+    public Text answer4;
+
+    public string correctAnswer;
 
    
     // Start is called before the first frame update
@@ -30,6 +39,7 @@ public class QuizzManagement : MonoBehaviour
         {
             hardQuestionsNotUsed = QuestionReader.hardQuestionsList;
         }
+        
     }
 
     // Update is called once per frame
@@ -38,19 +48,26 @@ public class QuizzManagement : MonoBehaviour
         
     }
 
-    public static void ShowQuizz()
+    public void ShowQuizz()
     {
         Debug.Log("A questão é: " + currentQuestion.question);
         foreach(Answer answers in currentQuestion.answers)
         {
             Debug.Log("Resposta " + answers.answer);
         }
+
+        questionText.text = currentQuestion.question;
+        answer1.text = currentQuestion.answers[0].answer;
+        answer2.text = currentQuestion.answers[1].answer;
+        answer3.text = currentQuestion.answers[2].answer;
+        answer4.text = currentQuestion.answers[3].answer;
         int indexCorrectAnswer;
         int.TryParse(currentQuestion.correct, out indexCorrectAnswer);
-        Debug.Log("Resposta Correta: " + currentQuestion.answers[indexCorrectAnswer].answer);
+        correctAnswer = currentQuestion.answers[indexCorrectAnswer].answer;
+        Debug.Log("Resposta Certa " + correctAnswer);
     }
 
-    public static void GetEasyRandomQuestion()
+    public void GetEasyRandomQuestion()
     {
         int questionIndex = Random.Range(0, easyQuestionsNotUsed.Count);
         currentQuestion = easyQuestionsNotUsed[questionIndex];
@@ -58,17 +75,28 @@ public class QuizzManagement : MonoBehaviour
         
     }
 
-    public static void GetMediumRandomQuestion()
+    public void GetMediumRandomQuestion()
     {
         int questionIndex = Random.Range(0, mediumQuestionsNotUsed.Count);
         currentQuestion = mediumQuestionsNotUsed[questionIndex];
         mediumQuestionsNotUsed.RemoveAt(questionIndex);
     }
 
-    public static void GetHardRandomQuestion()
+    public void GetHardRandomQuestion()
     {
         int questionIndex = Random.Range(0, hardQuestionsNotUsed.Count);
         currentQuestion = hardQuestionsNotUsed[questionIndex];
         hardQuestionsNotUsed.RemoveAt(questionIndex);
+    }
+
+    public void CheckAnswer(Text answer)
+    {
+        if(answer.text == correctAnswer)
+        {
+            Debug.Log("Acerto!");
+        }else
+        {
+            Debug.Log("Erro");
+        }
     }
 }

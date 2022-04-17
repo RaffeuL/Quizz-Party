@@ -4,35 +4,50 @@ using UnityEngine;
 
 public class PlayerPiece : MonoBehaviour
 {
+    public GameSystem gameSystem;
     public Route currentRoute;
+
+    public QuizzManagement quizz;
 
     public static bool canMove = false;
 
-    int routePosition;
+    public int myIndex;
+
+    int routePosition = -1;
 
     public int steps;
 
     bool isMoving;
 
+    public bool onQuizz = true;
+
     public DiceScript dice;
 
     void  Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(myIndex == gameSystem.playerIndexTurn)
         {
-            CheckTile();
-            dice.RollTheDice();
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                if(routePosition != -1) CheckTile();  
+                dice.RollTheDice();
+            }
+
+            if(canMove)
+            {
+                if(onQuizz)
+                {
+                    steps = DiceNumberTextScript.diceNumber;
+                    canMove = false;
+                    StartCoroutine(Move());
+                }
+                
+            }
         }
 
-        if(canMove)
-        {
-            steps = DiceNumberTextScript.diceNumber;
-            canMove = false;
-            StartCoroutine(Move());
-        }
     }
 
-    IEnumerator Move()
+    public IEnumerator Move()
     {
         if(isMoving)
         {
@@ -42,6 +57,7 @@ public class PlayerPiece : MonoBehaviour
         while(steps > 0)
         {
             Vector3 nextPos = currentRoute.childTileTransformList[routePosition + 1].position;
+            
             while(MoveToNextTile(nextPos)){yield return null;}
 
             yield return new WaitForSeconds(0.1f);
@@ -50,6 +66,7 @@ public class PlayerPiece : MonoBehaviour
         }
         
         isMoving = false;
+        gameSystem.NextPlayer();
     }
 
     bool MoveToNextTile(Vector3 goal)
@@ -64,22 +81,25 @@ public class PlayerPiece : MonoBehaviour
         //Pergunta Fácil
         if(tileColor == Color.green)
         {
-            QuizzManagement.GetEasyRandomQuestion();
-            QuizzManagement.ShowQuizz();
+            quizz.GetEasyRandomQuestion();
+            quizz.ShowQuizz();
+            onQuizz = true;
         }
 
         //Pergunta Média
         if(tileColor == Color.yellow)
         {
-            QuizzManagement.GetMediumRandomQuestion();
-            QuizzManagement.ShowQuizz();
+            quizz.GetMediumRandomQuestion();
+            quizz.ShowQuizz();
+            onQuizz = true;
         }
 
         //Pergunta Dificil
         if(tileColor == Color.red)
         {
-            QuizzManagement.GetHardRandomQuestion();
-            QuizzManagement.ShowQuizz();
+            quizz.GetHardRandomQuestion();
+            quizz.ShowQuizz();
+            onQuizz = true;
         }
         
     }

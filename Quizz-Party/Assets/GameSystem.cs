@@ -8,6 +8,8 @@ public class GameSystem : MonoBehaviour
 
     public List<Renderer> coloredTiles = new List<Renderer>();
 
+    public PlayerPiece[] playersPieces;
+    public int playerIndexTurn;
     private int maxGreen = 5;
     private int maxYellow = 5;
     private int maxRed = 5;
@@ -15,6 +17,7 @@ public class GameSystem : MonoBehaviour
     void Start()
     {
         CreateQuizzTiles();
+        
     }
     // Update is called once per frame
     void Update()
@@ -65,5 +68,11 @@ public class GameSystem : MonoBehaviour
                 tilesCount++;
             }
         }
+    }
+
+    public void NextPlayer()
+    {
+        playerIndexTurn++;
+        if(playerIndexTurn > 6) playerIndexTurn = 0;
     }
 }
