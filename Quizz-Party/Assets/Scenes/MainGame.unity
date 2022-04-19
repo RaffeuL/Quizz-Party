@@ -1989,6 +1989,22 @@ PrefabInstance:
       propertyPath: m_Text
       value: Resposta
       objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9079019549490737461, guid: dac3a415af264934197ec46ba07808cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -2094,9 +2110,9 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 35
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 98
+    m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2495,7 +2511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1396244178
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2987,6 +3003,34 @@ PrefabInstance:
     - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
       propertyPath: m_Text
       value: Resposta
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_RichText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9079019549490737461, guid: dac3a415af264934197ec46ba07808cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -3933,6 +3977,22 @@ PrefabInstance:
       propertyPath: m_Text
       value: Resposta
       objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9079019549490737461, guid: dac3a415af264934197ec46ba07808cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -4784,7 +4844,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
       propertyPath: m_Text
-      value: 'Resposta '
+      value: Resposta
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337949825459286634, guid: dac3a415af264934197ec46ba07808cd, type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9079019549490737461, guid: dac3a415af264934197ec46ba07808cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
