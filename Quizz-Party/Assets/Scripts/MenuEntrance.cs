@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EntranceRoom : MonoBehaviour
+public class MenuEntrance : MonoBehaviour
 {
     [SerializeField] private Text _playerName;
     [SerializeField] private Text _roomName;

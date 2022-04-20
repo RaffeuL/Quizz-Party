@@ -5,15 +5,31 @@ using Photon.Pun;
 
 public class Menu : MonoBehaviourPunCallbacks
 {
-    [SerializeField] private EntranceRoom _entranceRoom;
+    [SerializeField] private MenuEntrance _menuEntrance;
+    [SerializeField] private MenuLobby _menuLobby;
 
     void Start()
     {
-        _entranceRoom.gameObject.SetActive(false);
+        _menuEntrance.gameObject.SetActive(false);
+        _menuLobby.gameObject.SetActive(false);
     }
 
     public override void OnConnectedToMaster()
     {
-        _entranceRoom.gameObject.SetActive(true);
+        _menuEntrance.gameObject.SetActive(true);
+    }
+
+    public override void OnJoinedRoom()
+    {
+        ChangeMenu(_menuLobby.gameObject);
+        _menuLobby.UpdateListPlayer();
+    }
+
+    public void ChangeMenu(GameObject menu)
+    {
+        _menuEntrance.gameObject.SetActive(false);
+        _menuLobby.gameObject.SetActive(false);
+
+        menu.SetActive(true);
     }
 }

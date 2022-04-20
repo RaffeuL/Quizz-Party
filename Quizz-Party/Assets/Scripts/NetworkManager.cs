@@ -39,6 +39,22 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.NickName = nickname;
     }
 
+    public string GetPlayerList()
+    {
+        var playerList = "";
+        foreach (var player in PhotonNetwork.PlayerList)
+        {
+            playerList += player.NickName + "\n";
+        }
+
+        return playerList;
+    }
+
+    public bool MasterClient()
+    {
+        return PhotonNetwork.IsMasterClient;
+    }
+
     public override void OnConnectedToMaster()
     {
         Debug.Log("Conexão bem sucedida");
