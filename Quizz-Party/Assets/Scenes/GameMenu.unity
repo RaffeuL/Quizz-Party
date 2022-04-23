@@ -608,9 +608,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1071858575}
-        m_TargetAssemblyTypeName: EntranceRoom, Assembly-CSharp
-        m_MethodName: JoinRoom
+      - m_Target: {fileID: 392293215}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: LeftLooby
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -797,6 +797,7 @@ GameObject:
   m_Component:
   - component: {fileID: 545736726}
   - component: {fileID: 545736727}
+  - component: {fileID: 545736728}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -830,6 +831,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a9e13ebd5ff254dad57d1cc6fbc403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &545736728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545736725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 999
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &580282475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1905,16 +1928,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1071858575}
-        m_TargetAssemblyTypeName: EntranceRoom, Assembly-CSharp
-        m_MethodName: CreateRoom
-        m_Mode: 1
+      - m_Target: {fileID: 392293215}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MainGame
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1709745470
@@ -2101,6 +2124,7 @@ GameObject:
   - component: {fileID: 1772899174}
   - component: {fileID: 1772899173}
   - component: {fileID: 1772899176}
+  - component: {fileID: 1772899177}
   m_Layer: 5
   m_Name: Lobby
   m_TagString: Untagged
@@ -2205,6 +2229,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerlist: {fileID: 1436190463}
   _startGame: {fileID: 1709745469}
+--- !u!114 &1772899177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772899171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1926153740
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class Menu : MonoBehaviourPunCallbacks
 {
@@ -22,7 +23,7 @@ public class Menu : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         ChangeMenu(_menuLobby.gameObject);
-        _menuLobby.UpdateListPlayer();
+        _menuLobby.photonView.RPC("UpdatePlayerList", RpcTarget.All);
     }
 
     public void ChangeMenu(GameObject menu)
@@ -32,4 +33,21 @@ public class Menu : MonoBehaviourPunCallbacks
 
         menu.SetActive(true);
     }
+
+    public void LeftLooby()
+    {
+        NetworkManager.Instance.LeftLobby();
+        ChangeMenu(_menuEntrance.gameObject);
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        _menuLobby.UpdatePlayerList();
+    }
+
+    public void StartGame(string sceneName)
+    {
+        NetworkManager.Instance.photonView.RPC("StartGame", RpcTarget.All, sceneName); 
+    }
+
 }

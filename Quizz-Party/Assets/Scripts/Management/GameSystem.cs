@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class GameSystem : MonoBehaviour
 {
-    public Route currentRoute;
-
+    public static GameSystem Instance {get; private set;}
+    [SerializeField] private Route currentRoute;
     public List<Renderer> coloredTiles = new List<Renderer>();
-
-    public PlayerPiece[] playersPieces;
+    [SerializeField] private PlayerPiece[] playersPieces;
+    [SerializeField] private QuizzManagement _quizzManagement;
     public int playerIndexTurn;
     private int maxGreen = 5;
     private int maxYellow = 5;
     private int maxRed = 5;
 
+    private void Awake()
+        {
+            if(Instance != null && Instance != this)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     void Start()
     {
         CreateQuizzTiles();
+        _quizzManagement.gameObject.SetActive(false);
         
     }
     // Update is called once per frame
@@ -73,6 +84,26 @@ public class GameSystem : MonoBehaviour
     public void NextPlayer()
     {
         playerIndexTurn++;
-        if(playerIndexTurn > 6) playerIndexTurn = 0;
+        if(playerIndexTurn >= 2) playerIndexTurn = 0;
+        Debug.Log("Next player: " + playerIndexTurn);
+    }
+
+    public void StartQuizz(string dificult)
+    {
+        Debug.Log("Começo o quizz fml");
+        _quizzManagement.gameObject.SetActive(true);
+        switch (dificult)
+        {
+            case "Fácil":
+                _quizzManagement.GetEasyRandomQuestion();
+            break;
+            case "Média":
+                _quizzManagement.GetMediumRandomQuestion();
+            break;
+            case "Difícil":
+                _quizzManagement.GetHardRandomQuestion();
+            break;
+        }
+        _quizzManagement.ShowQuizz();
     }
 }

@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class PlayerPiece : MonoBehaviour
 {
-    public GameSystem gameSystem;
-    public Route currentRoute;
-
-    public QuizzManagement quizz;
+   [SerializeField] private Route currentRoute;
 
     public static bool canMove = false;
 
@@ -21,11 +18,11 @@ public class PlayerPiece : MonoBehaviour
 
     public bool onQuizz = true;
 
-    public DiceScript dice;
+    [SerializeField] private DiceScript dice;
 
     void  Update()
     {
-        if(myIndex == gameSystem.playerIndexTurn)
+        if(myIndex == GameSystem.Instance.playerIndexTurn)
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
@@ -66,7 +63,7 @@ public class PlayerPiece : MonoBehaviour
         }
         
         isMoving = false;
-        gameSystem.NextPlayer();
+        //GameSystem.Instance.NextPlayer();
     }
 
     bool MoveToNextTile(Vector3 goal)
@@ -81,24 +78,21 @@ public class PlayerPiece : MonoBehaviour
         //Pergunta Fácil
         if(tileColor == Color.green)
         {
-            quizz.GetEasyRandomQuestion();
-            quizz.ShowQuizz();
+            GameSystem.Instance.StartQuizz("Fácil");
             onQuizz = true;
         }
 
         //Pergunta Média
         if(tileColor == Color.yellow)
         {
-            quizz.GetMediumRandomQuestion();
-            quizz.ShowQuizz();
+            GameSystem.Instance.StartQuizz("Média");
             onQuizz = true;
         }
 
         //Pergunta Dificil
         if(tileColor == Color.red)
         {
-            quizz.GetHardRandomQuestion();
-            quizz.ShowQuizz();
+            GameSystem.Instance.StartQuizz("Difícil");
             onQuizz = true;
         }
         

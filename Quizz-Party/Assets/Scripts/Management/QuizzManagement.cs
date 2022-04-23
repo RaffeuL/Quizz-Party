@@ -6,25 +6,24 @@ using System.Linq;
 
 public class QuizzManagement : MonoBehaviour
 { 
-
     private static List<Question> easyQuestionsNotUsed;
     private static List<Question> mediumQuestionsNotUsed;
     private static List<Question> hardQuestionsNotUsed;
 
     private static Question currentQuestion;
 
-    public Text questionText;
-    public Text answer1;
-    public Text answer2;
-    public Text answer3;
-    public Text answer4;
+    [SerializeField] private Text questionText;
+    [SerializeField] private Text answer1;
+    [SerializeField] private Text answer2;
+    [SerializeField] private Text answer3;
+    [SerializeField] private Text answer4;
 
-    public string correctAnswer;
+    private string correctAnswer;
 
-   
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {   
+        Debug.Log("wake wake blue");
         if(easyQuestionsNotUsed == null || easyQuestionsNotUsed.Count == 0)
         {
             easyQuestionsNotUsed = QuestionReader.easyQuestionsList;
@@ -69,6 +68,7 @@ public class QuizzManagement : MonoBehaviour
 
     public void GetEasyRandomQuestion()
     {
+        Debug.Log("wake wake aaae");
         int questionIndex = Random.Range(0, easyQuestionsNotUsed.Count);
         currentQuestion = easyQuestionsNotUsed[questionIndex];
         easyQuestionsNotUsed.RemoveAt(questionIndex);
@@ -77,6 +77,7 @@ public class QuizzManagement : MonoBehaviour
 
     public void GetMediumRandomQuestion()
     {
+        Debug.Log("wake wake aaae");
         int questionIndex = Random.Range(0, mediumQuestionsNotUsed.Count);
         currentQuestion = mediumQuestionsNotUsed[questionIndex];
         mediumQuestionsNotUsed.RemoveAt(questionIndex);
@@ -84,6 +85,7 @@ public class QuizzManagement : MonoBehaviour
 
     public void GetHardRandomQuestion()
     {
+        Debug.Log("wake wake aaae");
         int questionIndex = Random.Range(0, hardQuestionsNotUsed.Count);
         currentQuestion = hardQuestionsNotUsed[questionIndex];
         hardQuestionsNotUsed.RemoveAt(questionIndex);

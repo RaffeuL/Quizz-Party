@@ -6,7 +6,6 @@ public class QuestionReader : MonoBehaviour
 {
     public TextAsset jsonFile;
 
-
     public static List<Question> easyQuestionsList = new List<Question>();
     public static List<Question> mediumQuestionsList = new List<Question>();
     public static List<Question> hardQuestionsList = new List<Question>();

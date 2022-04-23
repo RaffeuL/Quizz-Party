@@ -59,4 +59,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Conexão bem sucedida");
     }
+
+    public void LeftLobby()
+    {
+        PhotonNetwork.LeaveLobby();
+    }
+
+    [PunRPC]
+    public void StartGame(string  sceneName)
+    {
+        PhotonNetwork.LoadLevel(sceneName);
+    }
 }
