@@ -48,7 +48,7 @@ public class DiceCheckZoneScript : MonoBehaviour
             }
             if(!isFrozzen)
             {
-                PlayerPiece.canMove = true;
+                //PlayerPiece.canMove = true;
                 isFrozzen = true;
             }
         }

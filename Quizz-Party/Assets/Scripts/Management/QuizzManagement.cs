@@ -23,7 +23,6 @@ public class QuizzManagement : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {   
-        Debug.Log("wake wake blue");
         if(easyQuestionsNotUsed == null || easyQuestionsNotUsed.Count == 0)
         {
             easyQuestionsNotUsed = QuestionReader.easyQuestionsList;

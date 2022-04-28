@@ -1,43 +1,71 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameSystem : MonoBehaviour
+public class GameSystem : MonoBehaviourPunCallbacks
 {
     public static GameSystem Instance {get; private set;}
-    [SerializeField] private Route currentRoute;
+
+    [SerializeField] public Route currentRoute;
+    [SerializeField] private DiceScript _dice;
     public List<Renderer> coloredTiles = new List<Renderer>();
-    [SerializeField] private PlayerPiece[] playersPieces;
+    //[SerializeField] private PlayerPiece[] playersPieces;
     [SerializeField] private QuizzManagement _quizzManagement;
-    public int playerIndexTurn;
+    
     private int maxGreen = 5;
     private int maxYellow = 5;
     private int maxRed = 5;
 
-    private void Awake()
-        {
-            if(Instance != null && Instance != this)
-            {
-                gameObject.SetActive(false);
-                return;
-            }
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    void Start()
-    {
-        CreateQuizzTiles();
-        _quizzManagement.gameObject.SetActive(false);
+    #region Player Stuff
+    private int _playerColor = 0;
+    private int _playersInGame = 0;
+    private List<PlayerPiece> _players;   
+    public List<PlayerPiece> Players { get => _players; private set => _players = value; }
+    [SerializeField] private string[] _prefabLocation;
+    [SerializeField] private Transform[] _spawns;
+    public int playerIndexTurn;
         
-    }
-    // Update is called once per frame
-    void Update()
+    #endregion
+    private void Awake()
     {
+        if(Instance != null && Instance != this)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    private void Start()
+    {
+        _players = new List<PlayerPiece>();
+        photonView.RPC("AddPlayer", RpcTarget.AllBuffered);
+        
+        CreateQuizzTiles();  
+        _quizzManagement.gameObject.SetActive(false);      
+    }
+
+    [PunRPC]
+    private void AddPlayer()
+    {
+        _playersInGame++;
+        if( _playersInGame == PhotonNetwork.PlayerList.Length)
+        {
+            CreatePlayer();
+        }
+    }
+
+    private void CreatePlayer()
+    {
+        var playerObject = PhotonNetwork.Instantiate(_prefabLocation[0], _spawns[0].position, Quaternion.identity);
+        var player = playerObject.GetComponent<PlayerPiece>();
+
+        player.photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
         
     }
     public void CreateQuizzTiles()
     {   
-
         coloredTiles.Clear();
         int tilesCount = 0;
         int tileIndex;
@@ -81,6 +109,7 @@ public class GameSystem : MonoBehaviour
         }
     }
 
+    [PunRPC]
     public void NextPlayer()
     {
         playerIndexTurn++;
@@ -105,5 +134,10 @@ public class GameSystem : MonoBehaviour
             break;
         }
         _quizzManagement.ShowQuizz();
+    }
+
+    public void StartDice()
+    {
+        Debug.Log("Dado");
     }
 }

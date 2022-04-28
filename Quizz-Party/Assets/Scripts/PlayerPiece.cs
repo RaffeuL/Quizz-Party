@@ -1,25 +1,28 @@
+using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPiece : MonoBehaviour
+public class PlayerPiece : MonoBehaviourPunCallbacks
 {
-   [SerializeField] private Route currentRoute;
-
+    private Route currentRoute;
     public static bool canMove = false;
-
     public int myIndex;
-
     int routePosition = -1;
-
     public int steps;
-
     bool isMoving;
-
     public bool onQuizz = true;
+    private Player _photonPlayer;
+    private int _id;
 
-    [SerializeField] private DiceScript dice;
-
+    [PunRPC]
+    public void Initialize(Player player)
+    {
+        _photonPlayer = player;
+        _id = player.ActorNumber;      
+        GameSystem.Instance.Players.Add(this);
+        currentRoute = GameSystem.Instance.currentRoute;
+    }
     void  Update()
     {
         if(myIndex == GameSystem.Instance.playerIndexTurn)
@@ -27,7 +30,7 @@ public class PlayerPiece : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 if(routePosition != -1) CheckTile();  
-                dice.RollTheDice();
+                GameSystem.Instance.StartDice();
             }
 
             if(canMove)
@@ -41,7 +44,6 @@ public class PlayerPiece : MonoBehaviour
                 
             }
         }
-
     }
 
     public IEnumerator Move()

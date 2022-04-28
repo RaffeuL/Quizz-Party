@@ -38,6 +38,10 @@ MonoBehaviour:
   - DestroyRpc
   - UpdatePlayerList
   - StartGame
+  - AddPlayer
+  - CreateQuizzTiles
+  - NextPlayer
+  - Initialize
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
