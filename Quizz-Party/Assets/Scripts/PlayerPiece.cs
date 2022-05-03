@@ -15,13 +15,19 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
     private Player _photonPlayer;
     private int _id;
 
+    private Renderer myRenderer;
+
     [PunRPC]
     public void Initialize(Player player)
     {
         _photonPlayer = player;
         _id = player.ActorNumber;      
+        Debug.Log("Meu id: " + _id);
         GameSystem.Instance.Players.Add(this);
         currentRoute = GameSystem.Instance.currentRoute;
+        myRenderer = GetComponentInChildren<Renderer>();
+        myRenderer.material.color = GameSystem.Instance.playerColors[_id - 1];
+        transform.position = GameSystem.Instance.Spawns[_id - 1].position;
     }
     void  Update()
     {

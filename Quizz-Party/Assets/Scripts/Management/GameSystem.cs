@@ -22,8 +22,10 @@ public class GameSystem : MonoBehaviourPunCallbacks
     private int _playersInGame = 0;
     private List<PlayerPiece> _players;   
     public List<PlayerPiece> Players { get => _players; private set => _players = value; }
-    [SerializeField] private string[] _prefabLocation;
+    [SerializeField] private string _prefabLocation;
     [SerializeField] private Transform[] _spawns;
+    public Transform[] Spawns { get => _spawns; private set => _spawns = value; }
+    [SerializeField] public Color[] playerColors;
     public int playerIndexTurn;
         
     #endregion
@@ -58,7 +60,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
 
     private void CreatePlayer()
     {
-        var playerObject = PhotonNetwork.Instantiate(_prefabLocation[0], _spawns[0].position, Quaternion.identity);
+        var playerObject = PhotonNetwork.Instantiate(_prefabLocation, _spawns[0].position, Quaternion.identity);
         var player = playerObject.GetComponent<PlayerPiece>();
 
         player.photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);

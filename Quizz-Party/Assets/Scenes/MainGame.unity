@@ -2236,9 +2236,7 @@ MonoBehaviour:
   _dice: {fileID: 1547265238}
   coloredTiles: []
   _quizzManagement: {fileID: 1396244179}
-  _prefabLocation:
-  - PlayerPieceBlack
-  - Player
+  _prefabLocation: PlayerPieceBlack
   _spawns:
   - {fileID: 224855184}
   - {fileID: 1285036557}
@@ -2246,6 +2244,13 @@ MonoBehaviour:
   - {fileID: 1886533983}
   - {fileID: 88385311}
   - {fileID: 1683386940}
+  playerColors:
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.15686275, b: 0.1764706, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.14901961, g: 0.23137257, b: 1, a: 1}
+  - {r: 0.23529413, g: 1, b: 0.18823531, a: 1}
+  - {r: 1, g: 1, b: 0.19215688, a: 1}
   playerIndexTurn: 0
 --- !u!224 &1335367315
 RectTransform:
