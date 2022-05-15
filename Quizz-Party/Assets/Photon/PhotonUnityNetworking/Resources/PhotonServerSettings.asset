@@ -42,6 +42,15 @@ MonoBehaviour:
   - CreateQuizzTiles
   - NextPlayer
   - Initialize
+  - RollTheDice
+  - StartDice
+  - StartMove
+  - StartPlayerMove
+  - UpdateDiceNumber
+  - AtualizaDado
+  - StartGameMultiplayer
+  - EndPlayerTurn
+  - EndQuizz
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

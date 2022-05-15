@@ -19,8 +19,6 @@ public class QuizzManagement : MonoBehaviour
     [SerializeField] private Text answer4;
 
     private string correctAnswer;
-
-    // Start is called before the first frame update
     void Awake()
     {   
         if(easyQuestionsNotUsed == null || easyQuestionsNotUsed.Count == 0)
@@ -67,7 +65,6 @@ public class QuizzManagement : MonoBehaviour
 
     public void GetEasyRandomQuestion()
     {
-        Debug.Log("wake wake aaae");
         int questionIndex = Random.Range(0, easyQuestionsNotUsed.Count);
         currentQuestion = easyQuestionsNotUsed[questionIndex];
         easyQuestionsNotUsed.RemoveAt(questionIndex);
@@ -76,7 +73,6 @@ public class QuizzManagement : MonoBehaviour
 
     public void GetMediumRandomQuestion()
     {
-        Debug.Log("wake wake aaae");
         int questionIndex = Random.Range(0, mediumQuestionsNotUsed.Count);
         currentQuestion = mediumQuestionsNotUsed[questionIndex];
         mediumQuestionsNotUsed.RemoveAt(questionIndex);
@@ -84,7 +80,6 @@ public class QuizzManagement : MonoBehaviour
 
     public void GetHardRandomQuestion()
     {
-        Debug.Log("wake wake aaae");
         int questionIndex = Random.Range(0, hardQuestionsNotUsed.Count);
         currentQuestion = hardQuestionsNotUsed[questionIndex];
         hardQuestionsNotUsed.RemoveAt(questionIndex);
@@ -94,10 +89,11 @@ public class QuizzManagement : MonoBehaviour
     {
         if(answer.text == correctAnswer)
         {
-            Debug.Log("Acerto!");
-        }else
+            PlayerPiece.me.answeredRight = true;
+        }
+        else
         {
-            Debug.Log("Erro");
+            GameSystem.Instance.EndQuizz();
         }
     }
 }

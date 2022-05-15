@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class DiceCheckZoneScript : MonoBehaviour
+public class DiceCheckZoneScript : MonoBehaviourPunCallbacks
 {
 
     Vector3 diceVelocity;
@@ -12,8 +13,7 @@ public class DiceCheckZoneScript : MonoBehaviour
         diceVelocity = DiceScript.diceVelocity;
     }
 
-    public static bool isFrozzen = true;
-
+    public static bool isRolling = false;
     void OnTriggerStay(Collider col)
     {
 
@@ -46,10 +46,10 @@ public class DiceCheckZoneScript : MonoBehaviour
                     
                     break;
             }
-            if(!isFrozzen)
+            if(isRolling)
             {
-                //PlayerPiece.canMove = true;
-                isFrozzen = true;
+                isRolling = false;
+                GameSystem.Instance.photonView.RPC("StartPlayerMove", RpcTarget.All);
             }
         }
         

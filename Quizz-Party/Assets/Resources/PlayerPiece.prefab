@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 4163607321230567988}
   - component: {fileID: 4984717955183520463}
   m_Layer: 0
-  m_Name: PlayerPieceBlack
+  m_Name: PlayerPiece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,9 +144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46675aa49533714cbd2c19d75dc7ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  answeredRight: 0
+  onQuizz: 0
   myTurn: 0
   steps: 0
-  onQuizz: 1
 --- !u!114 &4163607321230567988
 MonoBehaviour:
   m_ObjectHideFlags: 0

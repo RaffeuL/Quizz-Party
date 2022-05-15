@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class DiceScript : MonoBehaviour
+public class DiceScript : MonoBehaviourPunCallbacks
 {
     static Rigidbody rb;
     public static Vector3 diceVelocity;
@@ -21,7 +22,7 @@ public class DiceScript : MonoBehaviour
 
     public void RollTheDice()
     {
-            DiceCheckZoneScript.isFrozzen = false;
+            DiceCheckZoneScript.isRolling = true;
             DiceNumberTextScript.diceNumber = 0;
             float dirX = Random.Range(0, 500);
             float dirY = Random.Range(0, 500);

@@ -5,53 +5,74 @@ using UnityEngine;
 
 public class PlayerPiece : MonoBehaviourPunCallbacks
 {
+    #region PlayerStuff
+    public static PlayerPiece me;
+    private Player _photonPlayer;
+    private int _id;
+    private Renderer myRenderer;
+    #endregion
+
+    #region QuizzStuff
+    public bool answeredRight = false;
+    public bool onQuizz = false;
+    private int quizzTimer = 0;
+    #endregion
+
+    #region Moviment Variables
     private Route currentRoute;
-    public static bool canMove = false;
-    public int myIndex;
+    public bool myTurn = false;
     int routePosition = -1;
     public int steps;
     bool isMoving;
-    public bool onQuizz = true;
-    private Player _photonPlayer;
-    private int _id;
-
-    private Renderer myRenderer;
+    #endregion
 
     [PunRPC]
     public void Initialize(Player player)
     {
         _photonPlayer = player;
         _id = player.ActorNumber;      
-        Debug.Log("Meu id: " + _id);
+
         GameSystem.Instance.Players.Add(this);
         currentRoute = GameSystem.Instance.currentRoute;
         myRenderer = GetComponentInChildren<Renderer>();
         myRenderer.material.color = GameSystem.Instance.playerColors[_id - 1];
         transform.position = GameSystem.Instance.Spawns[_id - 1].position;
+        if(_photonPlayer.IsLocal) me = this;
     }
     void  Update()
     {
-        if(myIndex == GameSystem.Instance.playerIndexTurn)
+        if(!photonView.IsMine)
+        {
+            return;
+        }
+
+        if(onQuizz)
+        {
+            if(answeredRight)
+            {
+                GameSystem.Instance.DisableQuizz();
+                StartMove(); 
+            }
+            quizzTimer++;
+            Debug.LogError("Timer : " + quizzTimer);
+        }
+        if(GameSystem.Instance.activePlayer == _photonPlayer)
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
-                if(routePosition != -1) CheckTile();  
-                GameSystem.Instance.StartDice();
-            }
-
-            if(canMove)
-            {
-                if(onQuizz)
+                if(!CheckQuizz())
                 {
-                    steps = DiceNumberTextScript.diceNumber;
-                    canMove = false;
-                    StartCoroutine(Move());
-                }
-                
-            }
+                    StartMove();
+                }                
+            }  
         }
     }
-
+    public void StartMove()
+    {
+        steps = Random.Range(1,6);
+        GameSystem.Instance.photonView.RPC("AtualizaDado", RpcTarget.All, steps);
+        StartCoroutine(Move());
+    }
     public IEnumerator Move()
     {
         if(isMoving)
@@ -71,7 +92,7 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         }
         
         isMoving = false;
-        //GameSystem.Instance.NextPlayer();
+        GameSystem.Instance.photonView.RPC("NextPlayer", RpcTarget.All);
     }
 
     bool MoveToNextTile(Vector3 goal)
@@ -79,8 +100,13 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         return goal != (transform.position = Vector3.MoveTowards(transform.position, goal, 2f * Time.deltaTime));
     }
     
-    void CheckTile()
+    private bool CheckQuizz()
     {
+        if(routePosition == -1)
+        {
+            return false;
+        }
+
         Color tileColor = currentRoute.childTileColorList[routePosition].material.color;
     
         //Pergunta Fácil
@@ -88,13 +114,14 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         {
             GameSystem.Instance.StartQuizz("Fácil");
             onQuizz = true;
+            return true;
         }
-
         //Pergunta Média
         if(tileColor == Color.yellow)
         {
             GameSystem.Instance.StartQuizz("Média");
             onQuizz = true;
+            return true;
         }
 
         //Pergunta Dificil
@@ -102,7 +129,8 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         {
             GameSystem.Instance.StartQuizz("Difícil");
             onQuizz = true;
+            return true;
         }
-        
+        return false;    
     }
 }

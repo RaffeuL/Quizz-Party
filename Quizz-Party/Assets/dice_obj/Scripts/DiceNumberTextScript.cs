@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class DiceNumberTextScript : MonoBehaviour
+public class DiceNumberTextScript : MonoBehaviourPunCallbacks
 {
     Text text;
     public static int diceNumber;
@@ -18,4 +19,5 @@ public class DiceNumberTextScript : MonoBehaviour
     {
         text.text = diceNumber.ToString();
     }
+
 }
