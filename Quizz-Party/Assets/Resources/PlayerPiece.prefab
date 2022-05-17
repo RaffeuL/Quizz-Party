@@ -144,8 +144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46675aa49533714cbd2c19d75dc7ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: 
   answeredRight: 0
   onQuizz: 0
+  hasDoubleDice: 0
   myTurn: 0
   steps: 0
 --- !u!114 &4163607321230567988

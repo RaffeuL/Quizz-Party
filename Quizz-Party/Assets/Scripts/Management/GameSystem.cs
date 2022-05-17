@@ -28,12 +28,14 @@ public class GameSystem : MonoBehaviourPunCallbacks
     #region Players Stuff
     [SerializeField] private string _prefabLocation;
     [SerializeField] private Transform[] _spawns;
+    [SerializeField] public GameObject playerInventory;
     private int _playersInGame = 0;
     public int playerIndexTurn = 0;
     public Player activePlayer = null;
+    public Text playerTurnText;
     #endregion
 
-    public Text vezDoJogador;
+    
     private void Awake()
     {
         if(Instance != null && Instance != this)
@@ -51,18 +53,19 @@ public class GameSystem : MonoBehaviourPunCallbacks
         photonView.RPC("AddPlayer", RpcTarget.AllBuffered);
         
         CreateQuizzTiles();  
-        _quizzManagement.gameObject.SetActive(false);      
+        _quizzManagement.gameObject.SetActive(false);
+        playerInventory.SetActive(false);
     }
 
     private void Update()
     {
         if(activePlayer == null)
         {
-            vezDoJogador.text = "Nenhum";
+            playerTurnText.text = "Nenhum";
         }
         else
         {
-            vezDoJogador.text = activePlayer.NickName;
+            playerTurnText.text = activePlayer.NickName;
         }
         
     }
@@ -84,6 +87,45 @@ public class GameSystem : MonoBehaviourPunCallbacks
 
         player.photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);  
     }
+    
+
+    public void StartGame()
+    {
+        photonView.RPC("StartGameMultiplayer", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    public void StartGameMultiplayer()
+    {
+        playerIndexTurn = 0;
+        activePlayer = PhotonNetwork.PlayerList[playerIndexTurn];
+        _startGame.gameObject.SetActive(false);
+    }
+
+    public void StartDice()
+    {
+        //_dice.RollTheDice();
+        //_dice.photonView.RPC("RollTheDice", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void NextPlayer()
+    {
+        Debug.LogError("Troca de player");
+        activePlayer = null;
+        playerIndexTurn++;
+        if(playerIndexTurn >= PhotonNetwork.PlayerList.Length) playerIndexTurn = 0;
+        activePlayer = PhotonNetwork.PlayerList[playerIndexTurn];
+    }
+
+
+    [PunRPC]
+    public void UpdadeDiceUI(int number)
+    {
+        DiceNumberTextScript.diceNumber = number;
+    }
+
+    #region QuizzFunctions
     public void CreateQuizzTiles()
     {   
         var maxGreen = 5;
@@ -151,40 +193,6 @@ public class GameSystem : MonoBehaviourPunCallbacks
         _quizzManagement.ShowQuizz();
     }
 
-    public void StartGame()
-    {
-        photonView.RPC("StartGameMultiplayer", RpcTarget.AllBuffered);
-    }
-
-    [PunRPC]
-    public void StartGameMultiplayer()
-    {
-        playerIndexTurn = 0;
-        activePlayer = PhotonNetwork.PlayerList[playerIndexTurn];
-        _startGame.gameObject.SetActive(false);
-    }
-
-    public void StartDice()
-    {
-        //_dice.RollTheDice();
-        //_dice.photonView.RPC("RollTheDice", RpcTarget.All);
-    }
-
-    public void StartPlayerMove(PlayerPiece player)
-    {
-        player.StartMove();
-    }
-
-    [PunRPC]
-    public void NextPlayer()
-    {
-        Debug.LogError("Troca de player");
-        activePlayer = null;
-        playerIndexTurn++;
-        if(playerIndexTurn >= PhotonNetwork.PlayerList.Length) playerIndexTurn = 0;
-        activePlayer = PhotonNetwork.PlayerList[playerIndexTurn];
-    }
-
     public void EndQuizz()
     {
         Debug.LogError("O player " + activePlayer.NickName + " Errou o Quizz, passando o turno");
@@ -198,15 +206,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
         PlayerPiece.me.answeredRight = false;
         _quizzManagement.gameObject.SetActive(false);
     }
-
-    [PunRPC]
-    public void AtualizaDado(int number)
-    {
-        DiceNumberTextScript.diceNumber = number;
-    }
-
-    public Player GetActivePlayer()
-    {
-        return activePlayer;
-    }
+    
+        
+    #endregion
 }
