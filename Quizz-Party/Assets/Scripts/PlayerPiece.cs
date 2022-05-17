@@ -9,6 +9,8 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
     public static PlayerPiece me;
     private Player _photonPlayer;
     private int _id;
+
+    public string playerName;
     private Renderer myRenderer;
     #endregion
 
@@ -31,7 +33,7 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
     {
         _photonPlayer = player;
         _id = player.ActorNumber;      
-
+        playerName = player.NickName;
         GameSystem.Instance.Players.Add(this);
         currentRoute = GameSystem.Instance.currentRoute;
         myRenderer = GetComponentInChildren<Renderer>();
