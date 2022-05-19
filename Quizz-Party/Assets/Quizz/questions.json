@@ -21,7 +21,7 @@
                 }
             ],
     
-            "correct": 2
+            "correct": 1
         },
 
         {
@@ -105,7 +105,7 @@
         {
             "question": "O que é um Switch?",
             "answer_1":"Não sei",
-            "answer_2":"Um switch é um dispositivo que simplesmente conecta todos os elementos da sua rede.",
+            "answer_2":"Um switch é um dispositivo que simplesmente conecta todos os elementos da sua rede",
             "answer_3":"Cabo de conexão",
             "answer_4":"Um console da Nintendo",
     

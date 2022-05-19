@@ -21,16 +21,17 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
     #endregion
 
     #region Moviment Variables
-
-    #region InventoryStuff
-    private bool inventoryIsOpen = false;
-    public bool hasDoubleDice = false;
-    #endregion
     private Route currentRoute;
     public bool myTurn = false;
     int routePosition = -1;
     public int steps;
     bool isMoving;
+    #endregion
+
+    #region InventoryStuff
+    public bool canUseItem = true;
+    private bool inventoryIsOpen = false;
+    public bool hasDoubleDice = false;
     #endregion
 
     [PunRPC]
@@ -53,11 +54,6 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.S))
-        {
-            CallInventory();
-        }
-
         if(onQuizz)
         {
             if(answeredRight)
@@ -77,11 +73,18 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
                     StartMove();
                 }                
             }  
+
+            if(Input.GetKeyDown(KeyCode.S))
+            {
+                CallInventory();
+            }
         }
     }
     public void StartMove()
     {
         steps = Random.Range(1,6);
+        Debug.LogError("Tirei: " + steps);
+        if(hasDoubleDice) steps += steps;
         GameSystem.Instance.photonView.RPC("UpdadeDiceUI", RpcTarget.All, steps);
         StartCoroutine(Move());
     }
@@ -104,6 +107,7 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         }
         
         isMoving = false;
+        ResetItensProps();
         GameSystem.Instance.photonView.RPC("NextPlayer", RpcTarget.All);
     }
 
@@ -146,11 +150,17 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         return false;    
     }
 
-    private void CallInventory()
+    public void CallInventory()
     {
         inventoryIsOpen = !inventoryIsOpen;
         Debug.LogError("Chamando inventário " + inventoryIsOpen);
         GameSystem.Instance.playerInventory.SetActive(inventoryIsOpen);
+    }
+
+    private void ResetItensProps()
+    {
+        canUseItem = true;
+        hasDoubleDice = false;
     }
 
 }

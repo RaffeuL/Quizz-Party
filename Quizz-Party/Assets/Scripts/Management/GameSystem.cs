@@ -34,8 +34,6 @@ public class GameSystem : MonoBehaviourPunCallbacks
     public Player activePlayer = null;
     public Text playerTurnText;
     #endregion
-
-    
     private void Awake()
     {
         if(Instance != null && Instance != this)
@@ -107,7 +105,6 @@ public class GameSystem : MonoBehaviourPunCallbacks
     [PunRPC]
     public void NextPlayer()
     {
-        Debug.LogError("Troca de player");
         activePlayer = null;
         playerIndexTurn++;
         if(playerIndexTurn >= PhotonNetwork.PlayerList.Length) playerIndexTurn = 0;
@@ -191,7 +188,6 @@ public class GameSystem : MonoBehaviourPunCallbacks
 
     public void EndQuizz()
     {
-        Debug.LogError("O player " + activePlayer.NickName + " Errou o Quizz, passando o turno");
         DisableQuizz();
         photonView.RPC("NextPlayer", RpcTarget.All);
     }
@@ -202,7 +198,6 @@ public class GameSystem : MonoBehaviourPunCallbacks
         PlayerPiece.me.answeredRight = false;
         _quizzManagement.gameObject.SetActive(false);
     }
-    
-        
+          
     #endregion
 }
