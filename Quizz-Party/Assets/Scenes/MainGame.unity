@@ -1618,9 +1618,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Dado Duplo
+  itemQuantity: 2
   itemNameText: {fileID: 813643210}
   itemQuantityText: {fileID: 735838002}
-  itemQuantity: 2
 --- !u!4 &873120108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8556842565935894651, guid: 7482f0ef436b952428413f32f7ebe539, type: 3}
@@ -2878,9 +2878,9 @@ MonoBehaviour:
   - {fileID: 1886533983}
   - {fileID: 88385311}
   - {fileID: 1683386940}
-  playerIndexTurn: 0
   playerInventory: {fileID: 219196160}
-  vezDoJogador: {fileID: 1572074486}
+  playerIndexTurn: 0
+  playerTurnText: {fileID: 1572074486}
 --- !u!224 &1335367315
 RectTransform:
   m_ObjectHideFlags: 0

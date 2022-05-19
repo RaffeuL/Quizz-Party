@@ -59,11 +59,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if(activePlayer == null)
-        {
-            playerTurnText.text = "Nenhum";
-        }
-        else
+        if(activePlayer != null)
         {
             playerTurnText.text = activePlayer.NickName;
         }
