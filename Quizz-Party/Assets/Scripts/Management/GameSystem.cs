@@ -11,7 +11,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
 
     #region Object Management
     [SerializeField] public Route currentRoute;
-    [SerializeField] private DiceScript _dice;
+    //[SerializeField] private DiceScript _dice;
     [SerializeField] private Button _startGame;
     [SerializeField] private QuizzManagement _quizzManagement;
     
@@ -22,6 +22,8 @@ public class GameSystem : MonoBehaviourPunCallbacks
     public List<PlayerPiece> Players { get => _players; private set => _players = value; }
     public Transform[] Spawns { get => _spawns; private set => _spawns = value; }
     [SerializeField] public Color[] playerColors;
+    [SerializeField] protected DiceRoller Dice;
+    [SerializeField] protected Sprite[] DiceSprites;
     public List<Renderer> coloredTiles = new List<Renderer>();
     #endregion
 
@@ -115,6 +117,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
     [PunRPC]
     public void UpdadeDiceUI(int number)
     {
+        Dice.img.sprite = DiceSprites[number];
         DiceNumberTextScript.diceNumber = number;
     }
 
