@@ -147,9 +147,10 @@ MonoBehaviour:
   playerName: 
   answeredRight: 0
   onQuizz: 0
-  hasDoubleDice: 0
   myTurn: 0
   steps: 0
+  canUseItem: 1
+  hasDoubleDice: 0
 --- !u!114 &4163607321230567988
 MonoBehaviour:
   m_ObjectHideFlags: 0

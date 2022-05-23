@@ -26,6 +26,9 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
     int routePosition = -1;
     public int steps;
     bool isMoving;
+
+    private int diceTimer;
+    private bool isRolling;
     #endregion
 
     #region InventoryStuff
@@ -81,13 +84,44 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         }
     }
     public void StartMove()
-    {
-        steps = Random.Range(1,6);
-        Debug.LogError("Tirei: " + steps);
-        if(hasDoubleDice) steps += steps;
-        GameSystem.Instance.photonView.RPC("UpdadeDiceUI", RpcTarget.All, steps);
-        StartCoroutine(Move());
+    {        
+        diceTimer = 20;
+        StartCoroutine(DiceAnimation());
+
     }
+    public IEnumerator DiceAnimation()
+    {
+        if(isRolling)
+        {
+            yield break;
+        }
+
+        isRolling = true;
+        while(diceTimer > 0)
+        {
+            steps = Random.Range(1,6);
+            GameSystem.Instance.photonView.RPC("UpdadeDiceUI", RpcTarget.All, steps);
+            yield return new WaitForSeconds(0.1f);
+            diceTimer--;
+        }
+        isRolling = false;
+        if(hasDoubleDice)
+        {
+            steps += steps;
+            GameSystem.Instance.photonView.RPC("UpdadeDiceUI", RpcTarget.All, steps);
+        }
+        StartCoroutine(Move());
+        
+        if(hasDoubleDice) steps += steps;
+        
+        diceTimer ++;
+        if(diceTimer >= 3000)
+        {
+            StartCoroutine(Move());
+            yield break;
+        }  
+    }
+
     public IEnumerator Move()
     {
         if(isMoving)
