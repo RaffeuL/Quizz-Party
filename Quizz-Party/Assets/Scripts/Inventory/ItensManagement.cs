@@ -10,13 +10,13 @@ public class ItensManagement : MonoBehaviour
     {
         if(doubleDice.itemQuantity > 0)
         {
-            Debug.LogError("O player " + GameSystem.Instance.activePlayer.NickName + " usou o " + doubleDice.itemName);
             PlayerPiece.me.hasDoubleDice = true;
             doubleDice.itemQuantity--;
             doubleDice.itemQuantityText.text = doubleDice.itemQuantity.ToString();
             PlayerPiece.me.CallInventory();
+            GameSystem.Instance.UseItemWarning(doubleDice.itemName);
         }
     }
-    
 
+    
 }

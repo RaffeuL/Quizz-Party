@@ -14,7 +14,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
     //[SerializeField] private DiceScript _dice;
     [SerializeField] private Button _startGame;
     [SerializeField] private QuizzManagement _quizzManagement;
-    
+    [SerializeField] private DiceRoller _dice;
     #endregion
 
     #region Lists
@@ -22,7 +22,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
     public List<PlayerPiece> Players { get => _players; private set => _players = value; }
     public Transform[] Spawns { get => _spawns; private set => _spawns = value; }
     [SerializeField] public Color[] playerColors;
-    [SerializeField] protected DiceRoller Dice;
+    
     [SerializeField] protected Sprite[] DiceSprites;
     public List<Renderer> coloredTiles = new List<Renderer>();
     #endregion
@@ -55,6 +55,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
         CreateQuizzTiles();  
         _quizzManagement.gameObject.SetActive(false);
         playerInventory.SetActive(false);
+        _startGame.interactable = NetworkManager.Instance.MasterClient();
     }
 
     private void Update()
@@ -66,6 +67,31 @@ public class GameSystem : MonoBehaviourPunCallbacks
         
     }
 
+    #region UI Update
+    [PunRPC]
+    public void UpdadeDiceUI(int number)
+    {
+        _dice.img.sprite = DiceSprites[number];
+        DiceNumberTextScript.diceNumber = number;
+    }
+
+    
+    public void UseItemWarning(string itemName)
+    {
+        photonView.RPC("UseItemWarningMultiplayer", RpcTarget.All, itemName);
+        
+    }
+
+    [PunRPC]
+    private void UseItemWarningMultiplayer(string itemName)
+    {
+        Debug.LogError("O player " + activePlayer.NickName + " usou o " + itemName);
+    }
+    #endregion
+
+    
+
+    #region Player Management
     [PunRPC]
     private void AddPlayer()
     {
@@ -83,8 +109,20 @@ public class GameSystem : MonoBehaviourPunCallbacks
 
         player.photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);  
     }
-    
 
+    [PunRPC]
+    public void NextPlayer()
+    {
+        activePlayer = null;
+        playerIndexTurn++;
+        if(playerIndexTurn >= PhotonNetwork.PlayerList.Length) playerIndexTurn = 0;
+        activePlayer = PhotonNetwork.PlayerList[playerIndexTurn];
+    }
+    
+    #endregion
+
+    
+    
     public void StartGame()
     {
         photonView.RPC("StartGameMultiplayer", RpcTarget.AllBuffered);
@@ -102,23 +140,6 @@ public class GameSystem : MonoBehaviourPunCallbacks
     {
         //_dice.RollTheDice();
         //_dice.photonView.RPC("RollTheDice", RpcTarget.All);
-    }
-
-    [PunRPC]
-    public void NextPlayer()
-    {
-        activePlayer = null;
-        playerIndexTurn++;
-        if(playerIndexTurn >= PhotonNetwork.PlayerList.Length) playerIndexTurn = 0;
-        activePlayer = PhotonNetwork.PlayerList[playerIndexTurn];
-    }
-
-
-    [PunRPC]
-    public void UpdadeDiceUI(int number)
-    {
-        Dice.img.sprite = DiceSprites[number];
-        DiceNumberTextScript.diceNumber = number;
     }
 
     #region QuizzFunctions
@@ -186,7 +207,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
                 _quizzManagement.GetHardRandomQuestion();
             break;
         }
-        _quizzManagement.ShowQuizz();
+        _quizzManagement.BuildQuizz();
     }
 
     public void EndQuizz()

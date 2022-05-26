@@ -105,21 +105,9 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
             diceTimer--;
         }
         isRolling = false;
-        if(hasDoubleDice)
-        {
-            steps += steps;
-            GameSystem.Instance.photonView.RPC("UpdadeDiceUI", RpcTarget.All, steps);
-        }
-        StartCoroutine(Move());
+        if(hasDoubleDice) steps *= 2;
         
-        if(hasDoubleDice) steps += steps;
-        
-        diceTimer ++;
-        if(diceTimer >= 3000)
-        {
-            StartCoroutine(Move());
-            yield break;
-        }  
+        StartCoroutine(Move());  
     }
 
     public IEnumerator Move()
@@ -187,7 +175,6 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
     public void CallInventory()
     {
         inventoryIsOpen = !inventoryIsOpen;
-        Debug.LogError("Chamando inventário " + inventoryIsOpen);
         GameSystem.Instance.playerInventory.SetActive(inventoryIsOpen);
     }
 

@@ -5,19 +5,22 @@ using UnityEngine.UI;
 using System.Linq;
 
 public class QuizzManagement : MonoBehaviour
-{ 
+{
+    #region Dificult
     private static List<Question> easyQuestionsNotUsed;
     private static List<Question> mediumQuestionsNotUsed;
     private static List<Question> hardQuestionsNotUsed;
+    #endregion
 
-    private static Question currentQuestion;
-
+    #region Question Texts UI
     [SerializeField] private Text questionText;
     [SerializeField] private Text answer1;
     [SerializeField] private Text answer2;
     [SerializeField] private Text answer3;
     [SerializeField] private Text answer4;
+    #endregion
 
+    private static Question currentQuestion;
     private string correctAnswer;
     void Awake()
     {   
@@ -38,20 +41,8 @@ public class QuizzManagement : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void BuildQuizz()
     {
-        
-    }
-
-    public void ShowQuizz()
-    {
-        Debug.Log("A questão é: " + currentQuestion.question);
-        foreach(Answer answers in currentQuestion.answers)
-        {
-            Debug.Log("Resposta " + answers.answer);
-        }
-
         questionText.text = currentQuestion.question;
         answer1.text = currentQuestion.answers[0].answer;
         answer2.text = currentQuestion.answers[1].answer;
@@ -60,7 +51,6 @@ public class QuizzManagement : MonoBehaviour
         int indexCorrectAnswer;
         int.TryParse(currentQuestion.correct, out indexCorrectAnswer);
         correctAnswer = currentQuestion.answers[indexCorrectAnswer].answer;
-        Debug.Log("Resposta Certa " + correctAnswer);
     }
 
     public void GetEasyRandomQuestion()
