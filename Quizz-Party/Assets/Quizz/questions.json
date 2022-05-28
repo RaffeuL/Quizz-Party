@@ -29,18 +29,87 @@
             "answers":
             [
                 {
-                    "answer":"a"
+                    "answer":"errada"
                 },
                 {
 
-                    "answer":"b"
+                    "answer":"errada"
                 },
                 {
                     
-                    "answer":"c"
+                    "answer":"certa"
                 },
                 {
-                    "answer":"d"
+                    "answer":"errada"
+                }
+            ],
+    
+            "correct": 3
+        },
+
+        {
+            "question": "Pergunta Fácil 3",
+            "answers":
+            [
+                {
+                    "answer":"errada"
+                },
+                {
+
+                    "answer":"errada"
+                },
+                {
+                    
+                    "answer":"certa"
+                },
+                {
+                    "answer":"errada"
+                }
+            ],
+    
+            "correct": 3
+        },
+
+        {
+            "question": "Pergunta Fácil 4",
+            "answers":
+            [
+                {
+                    "answer":"errada"
+                },
+                {
+
+                    "answer":"errada"
+                },
+                {
+                    
+                    "answer":"certa"
+                },
+                {
+                    "answer":"errada"
+                }
+            ],
+    
+            "correct": 3
+        },
+
+        {
+            "question": "Pergunta Fácil 5",
+            "answers":
+            [
+                {
+                    "answer":"errada"
+                },
+                {
+
+                    "answer":"errada"
+                },
+                {
+                    
+                    "answer":"certa"
+                },
+                {
+                    "answer":"errada"
                 }
             ],
     
@@ -51,22 +120,114 @@
     "medium":
     [
         {
-            "question": "Pergunta Média",
+            "question": "Pergunta Média 1",
             "answers":
             [
                 {
-                    "answer":"a"
+                    "answer":"certa"
                 },
                 {
 
-                    "answer":"b"
+                    "answer":"errada"
                 },
                 {
                     
-                    "answer":"c"
+                    "answer":"errada"
                 },
                 {
-                    "answer":"d"
+                    "answer":"errada"
+                }
+            ],
+    
+            "correct": 0
+        },
+
+        {
+            "question": "Pergunta Média 2",
+            "answers":
+            [
+                {
+                    "answer":"certa"
+                },
+                {
+
+                    "answer":"errada"
+                },
+                {
+                    
+                    "answer":"errada"
+                },
+                {
+                    "answer":"errada"
+                }
+            ],
+    
+            "correct": 0
+        },
+
+        {
+            "question": "Pergunta Média 3",
+            "answers":
+            [
+                {
+                    "answer":"certa"
+                },
+                {
+
+                    "answer":"errada"
+                },
+                {
+                    
+                    "answer":"errada"
+                },
+                {
+                    "answer":"errada"
+                }
+            ],
+    
+            "correct": 0
+        },
+
+        {
+            "question": "Pergunta Média 4",
+            "answers":
+            [
+                {
+                    "answer":"certa"
+                },
+                {
+
+                    "answer":"errada"
+                },
+                {
+                    
+                    "answer":"errada"
+                },
+                {
+                    "answer":"errada"
+                }
+            ],
+    
+            "correct": 0
+        },
+
+        {
+            "question": "Pergunta Média 5",
+            "answers":
+            [
+                {
+                    "answer":"certa"
+                },
+                {
+
+                    "answer":"errada"
+                },
+                {
+                    
+                    "answer":"errada"
+                },
+                {
+                    "answer":"errada"
                 }
             ],
     
@@ -77,81 +238,118 @@
     "hard":
     [
         {
-            "question": "Pergunta Dificil",
+            "question": "Pergunta Dificil 1",
             "answers":
             [
                 {
-                    "answer":"a"
+                    "answer":"errada"
                 },
                 {
 
-                    "answer":"b"
+                    "answer":"certa"
                 },
                 {
                     
-                    "answer":"c"
+                    "answer":"errada"
                 },
                 {
-                    "answer":"d"
+                    "answer":"errada"
+                }
+            ],
+    
+            "correct": 1
+        },
+
+        {
+            "question": "Pergunta Dificil 2",
+            "answers":
+            [
+                {
+                    "answer":"errada"
+                },
+                {
+
+                    "answer":"certa"
+                },
+                {
+                    
+                    "answer":"errada"
+                },
+                {
+                    "answer":"errada"
+                }
+            ],
+    
+            "correct": 1
+        },
+
+        {
+            "question": "Pergunta Dificil 3",
+            "answers":
+            [
+                {
+                    "answer":"errada"
+                },
+                {
+
+                    "answer":"certa"
+                },
+                {
+                    
+                    "answer":"errada"
+                },
+                {
+                    "answer":"errada"
+                }
+            ],
+    
+            "correct": 1
+        },
+        
+        {
+            "question": "Pergunta Dificil 4",
+            "answers":
+            [
+                {
+                    "answer":"errada"
+                },
+                {
+
+                    "answer":"certa"
+                },
+                {
+                    
+                    "answer":"errada"
+                },
+                {
+                    "answer":"errada"
+                }
+            ],
+    
+            "correct": 1
+        },
+
+        {
+            "question": "Pergunta Dificil 5",
+            "answers":
+            [
+                {
+                    "answer":"errada"
+                },
+                {
+
+                    "answer":"certa"
+                },
+                {
+                    
+                    "answer":"errada"
+                },
+                {
+                    "answer":"errada"
                 }
             ],
     
             "correct": 1
         }
-    ],
-
-    "questions":
-    [
-        {
-            "question": "O que é um Switch?",
-            "answer_1":"Não sei",
-            "answer_2":"Um switch é um dispositivo que simplesmente conecta todos os elementos da sua rede",
-            "answer_3":"Cabo de conexão",
-            "answer_4":"Um console da Nintendo",
-    
-            "correct": "answer_3"
-        },
-            
-        {
-            "question": "Pergunta 2",
-            "answer_1":"a",
-            "answer_2":"b",
-            "answer_3":"c",
-            "answer_4":"d",
-    
-            "correct": "answer_2"
-        },
-    
-        {
-            "question": "Pergunta 3",
-            "answer-1":"a",
-            "answer-2":"b",
-            "answer-3":"c",
-            "answer-4":"d",
-    
-            "correct": "answer_3"
-        },
-    
-        {
-            "question": "Pergunta 4",
-            "answer_1":"a",
-            "answer_2":"b",
-            "answer_3":"c",
-            "answer_4":"d",
-    
-            "correct": "answer_4"
-        },
-    
-        {
-            "question": "Pergunta 5",
-            "answer_1":"a",
-            "answer_2":"b",
-            "answer_3":"c",
-            "answer_4":"d",
-    
-            "correct": "answer_1"
-        }  
     ]
-      
-
 }
