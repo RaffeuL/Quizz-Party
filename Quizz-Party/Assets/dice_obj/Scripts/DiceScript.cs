@@ -23,7 +23,7 @@ public class DiceScript : MonoBehaviourPunCallbacks
     public void RollTheDice()
     {
             DiceCheckZoneScript.isRolling = true;
-            DiceNumberTextScript.diceNumber = 0;
+            //DiceNumberTextScript.diceNumber = 0;
             float dirX = Random.Range(0, 500);
             float dirY = Random.Range(0, 500);
             float dirZ = Random.Range(0, 500);

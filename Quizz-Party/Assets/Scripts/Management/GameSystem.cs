@@ -67,12 +67,26 @@ public class GameSystem : MonoBehaviourPunCallbacks
         
     }
 
+    #region Start Game
+    public void StartGame()
+    {
+        photonView.RPC("StartGameMultiplayer", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    public void StartGameMultiplayer()
+    {
+        playerIndexTurn = 0;
+        activePlayer = PhotonNetwork.PlayerList[playerIndexTurn];
+        _startGame.gameObject.SetActive(false);
+    }
+    #endregion
+
     #region UI Update
     [PunRPC]
     public void UpdadeDiceUI(int number)
     {
         _dice.img.sprite = DiceSprites[number];
-        DiceNumberTextScript.diceNumber = number;
     }
 
     
@@ -88,8 +102,6 @@ public class GameSystem : MonoBehaviourPunCallbacks
         Debug.LogError("O player " + activePlayer.NickName + " usou o " + itemName);
     }
     #endregion
-
-    
 
     #region Player Management
     [PunRPC]
@@ -121,21 +133,6 @@ public class GameSystem : MonoBehaviourPunCallbacks
     
     #endregion
 
-    
-    
-    public void StartGame()
-    {
-        photonView.RPC("StartGameMultiplayer", RpcTarget.AllBuffered);
-    }
-
-    [PunRPC]
-    public void StartGameMultiplayer()
-    {
-        playerIndexTurn = 0;
-        activePlayer = PhotonNetwork.PlayerList[playerIndexTurn];
-        _startGame.gameObject.SetActive(false);
-    }
-
     public void StartDice()
     {
         //_dice.RollTheDice();
@@ -145,16 +142,17 @@ public class GameSystem : MonoBehaviourPunCallbacks
     #region QuizzFunctions
     public void CreateQuizzTiles()
     {   
-        var maxGreen = 5;
-        var maxYellow = 5;
-        var maxRed = 5;
-
         coloredTiles.Clear();
         int tilesCount = 0;
         int tileIndex;
         int maxTiles =  currentRoute.childTileColorList.Count;
+        int quizzTiles = Mathf.RoundToInt((maxTiles/2)/3);
+
+        int maxGreen = quizzTiles;
+        int maxYellow = quizzTiles;
+        int maxRed = quizzTiles;
         
-        //Fill Green tiles
+        //Preenche as casas Verdes
         while(tilesCount < maxGreen)
         {
             tileIndex = Random.Range(0, maxTiles);
@@ -165,7 +163,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
                 tilesCount++;
             }
         }
-        //Fill Yellow tiles
+        //Preenche as casas Amarelas
         tilesCount = 0;
         while(tilesCount < maxYellow)
         {
@@ -178,7 +176,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
             }
         }
 
-        //Fill Red tiles
+        //Preenche as casas Vermelhas
         tilesCount = 0;
         while(tilesCount < maxRed)
         {
@@ -220,6 +218,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
     {
         PlayerPiece.me.onQuizz = false;
         PlayerPiece.me.answeredRight = false;
+        PlayerPiece.me.ResetItensProps();
         _quizzManagement.gameObject.SetActive(false);
     }
           

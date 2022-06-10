@@ -65,13 +65,13 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
                 StartMove(); 
             }
             quizzTimer++;
-            Debug.LogError("Timer : " + quizzTimer);
+            //Debug.LogError("Timer : " + quizzTimer);
         }
         if(GameSystem.Instance.activePlayer == _photonPlayer)
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
-                if(!CheckQuizz())
+                if(!CheckTile())
                 {
                     StartMove();
                 }                
@@ -135,10 +135,10 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
 
     bool MoveToNextTile(Vector3 goal)
     {
-        return goal != (transform.position = Vector3.MoveTowards(transform.position, goal, 2f * Time.deltaTime));
+        return goal != (transform.position = Vector3.MoveTowards(transform.position, goal, 3f * Time.deltaTime));
     }
     
-    private bool CheckQuizz()
+    private bool CheckTile()
     {
         if(routePosition == -1)
         {
@@ -146,6 +146,7 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         }
 
         Color tileColor = currentRoute.childTileColorList[routePosition].material.color;
+        //Verificando casas com Quizz
     
         //Pergunta Fácil
         if(tileColor == Color.green)
@@ -169,6 +170,9 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
             onQuizz = true;
             return true;
         }
+
+        //Eventos não-quizz
+
         return false;    
     }
 
@@ -178,7 +182,7 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         GameSystem.Instance.playerInventory.SetActive(inventoryIsOpen);
     }
 
-    private void ResetItensProps()
+    public void ResetItensProps()
     {
         canUseItem = true;
         hasDoubleDice = false;
