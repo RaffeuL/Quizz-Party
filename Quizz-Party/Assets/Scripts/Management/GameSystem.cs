@@ -139,7 +139,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
         //_dice.photonView.RPC("RollTheDice", RpcTarget.All);
     }
 
-    #region QuizzFunctions
+    #region TileEventsFunctions
     public void CreateQuizzTiles()
     {   
         coloredTiles.Clear();
@@ -151,6 +151,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
         int maxGreen = quizzTiles;
         int maxYellow = quizzTiles;
         int maxRed = quizzTiles;
+        int maxEvents = Mathf.RoundToInt((maxTiles)/4);
         
         //Preenche as casas Verdes
         while(tilesCount < maxGreen)
@@ -188,6 +189,19 @@ public class GameSystem : MonoBehaviourPunCallbacks
                 tilesCount++;
             }
         }
+
+        //Preenche as casas Com Eventos
+        tilesCount = 0;
+        while(tilesCount < maxEvents)
+        {
+            tileIndex = Random.Range(0, maxTiles);
+            if(!coloredTiles.Contains(currentRoute.childTileColorList[tileIndex]))
+            {
+                currentRoute.childTileColorList[tileIndex].material.color = Color.cyan;
+                coloredTiles.Add(currentRoute.childTileColorList[tileIndex]);
+                tilesCount++;
+            }
+        }
     }
 
     public void StartQuizz(string dificult)
@@ -220,6 +234,22 @@ public class GameSystem : MonoBehaviourPunCallbacks
         PlayerPiece.me.answeredRight = false;
         PlayerPiece.me.ResetItensProps();
         _quizzManagement.gameObject.SetActive(false);
+    }
+
+    public void StartEvent(int eventId)
+    {
+        switch (eventId)
+        {
+            case 0:
+            Debug.Log("Voltar um número de casas");
+            break;
+            case 1:
+            Debug.Log("Perder a vez");
+            break;
+            case 2:
+            Debug.Log("Não sei");
+            break;
+        }
     }
           
     #endregion

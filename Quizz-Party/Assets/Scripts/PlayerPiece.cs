@@ -99,7 +99,7 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         isRolling = true;
         while(diceTimer > 0)
         {
-            steps = Random.Range(1,6);
+            steps = Random.Range(1,7);
             GameSystem.Instance.photonView.RPC("UpdadeDiceUI", RpcTarget.All, steps);
             yield return new WaitForSeconds(0.1f);
             diceTimer--;
@@ -147,7 +147,6 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
 
         Color tileColor = currentRoute.childTileColorList[routePosition].material.color;
         //Verificando casas com Quizz
-    
         //Pergunta Fácil
         if(tileColor == Color.green)
         {
@@ -172,6 +171,16 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         }
 
         //Eventos não-quizz
+        if(tileColor == Color.cyan)
+        {
+            // Gera um evento aleatório entre
+            // 0 - Volta o mesmo numero de casas que o dado
+            // 1 - Preso por uma rodada
+            // 2 - Não sei
+            int eventId = Random.Range(0,3);
+            GameSystem.Instance.StartEvent(eventId);
+            return true;
+        }
 
         return false;    
     }
