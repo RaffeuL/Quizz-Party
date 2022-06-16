@@ -235,22 +235,6 @@ public class GameSystem : MonoBehaviourPunCallbacks
         PlayerPiece.me.ResetItensProps();
         _quizzManagement.gameObject.SetActive(false);
     }
-
-    public void StartEvent(int eventId)
-    {
-        switch (eventId)
-        {
-            case 0:
-            Debug.Log("Voltar um número de casas");
-            break;
-            case 1:
-            Debug.Log("Perder a vez");
-            break;
-            case 2:
-            Debug.Log("Não sei");
-            break;
-        }
-    }
           
     #endregion
 }

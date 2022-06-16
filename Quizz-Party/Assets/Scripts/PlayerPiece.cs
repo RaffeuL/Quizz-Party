@@ -178,7 +178,7 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
             // 1 - Preso por uma rodada
             // 2 - Não sei
             int eventId = Random.Range(0,3);
-            GameSystem.Instance.StartEvent(eventId);
+            //GameSystem.Instance.StartEvent(eventId);
             return true;
         }
 
