@@ -22,8 +22,8 @@ public class EventsManagement : MonoBehaviourPun
     {
         switch (eventId)
         {
-            case 0:
-            Debug.Log("Voltar um número de casas");
+            case 0: //Voltar casas
+            PlayerPiece.me.StartReverseMove();
             break;
             case 1:
             Debug.Log("Perder a vez");

@@ -86,10 +86,17 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
     public void StartMove()
     {        
         diceTimer = 20;
-        StartCoroutine(DiceAnimation());
+        StartCoroutine(DiceAnimation(false));
 
     }
-    public IEnumerator DiceAnimation()
+
+    public void StartReverseMove()
+    {
+        diceTimer = 20;
+        StartCoroutine(DiceAnimation(true));
+
+    }
+    public IEnumerator DiceAnimation(bool reverse)
     {
         if(isRolling)
         {
@@ -106,8 +113,7 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         }
         isRolling = false;
         if(hasDoubleDice) steps *= 2;
-        
-        StartCoroutine(Move());  
+        var condition = (reverse == true)  ?  StartCoroutine(MoveReverse()) : StartCoroutine(Move());
     }
 
     public IEnumerator Move()
@@ -133,6 +139,37 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         GameSystem.Instance.photonView.RPC("NextPlayer", RpcTarget.All);
     }
 
+    public IEnumerator MoveReverse()
+    {
+        if(isMoving)
+        {
+            yield break;
+        }
+        isMoving = true;
+        while(steps > 0)
+        {
+            if(routePosition == 0)
+            {
+                steps = 0;
+                isMoving = false;
+                ResetItensProps();
+                GameSystem.Instance.photonView.RPC("NextPlayer", RpcTarget.All);
+                break;
+            }
+            Vector3 nextPos = currentRoute.childTileTransformList[routePosition - 1].position;
+            
+            while(MoveToNextTile(nextPos)){yield return null;}
+
+            yield return new WaitForSeconds(0.1f);
+            steps--;
+            routePosition--;
+        }
+        
+        isMoving = false;
+        ResetItensProps();
+        GameSystem.Instance.photonView.RPC("NextPlayer", RpcTarget.All);
+    }
+
     bool MoveToNextTile(Vector3 goal)
     {
         return goal != (transform.position = Vector3.MoveTowards(transform.position, goal, 3f * Time.deltaTime));
@@ -150,23 +187,26 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         //Pergunta Fácil
         if(tileColor == Color.green)
         {
-            GameSystem.Instance.StartQuizz("Fácil");
-            onQuizz = true;
+            EventsManagement.Instance.StartEvent(0);
+            //GameSystem.Instance.StartQuizz("Fácil");
+            //onQuizz = true;
             return true;
         }
         //Pergunta Média
         if(tileColor == Color.yellow)
         {
-            GameSystem.Instance.StartQuizz("Média");
-            onQuizz = true;
+            EventsManagement.Instance.StartEvent(0);
+            //GameSystem.Instance.StartQuizz("Média");
+            //onQuizz = true;
             return true;
         }
 
         //Pergunta Dificil
         if(tileColor == Color.red)
         {
-            GameSystem.Instance.StartQuizz("Difícil");
-            onQuizz = true;
+            EventsManagement.Instance.StartEvent(0);
+            //GameSystem.Instance.StartQuizz("Difícil");
+            //onQuizz = true;
             return true;
         }
 
@@ -177,8 +217,8 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
             // 0 - Volta o mesmo numero de casas que o dado
             // 1 - Preso por uma rodada
             // 2 - Não sei
-            int eventId = Random.Range(0,3);
-            //GameSystem.Instance.StartEvent(eventId);
+            //int eventId = Random.Range(0,3);
+            EventsManagement.Instance.StartEvent(0);
             return true;
         }
 
