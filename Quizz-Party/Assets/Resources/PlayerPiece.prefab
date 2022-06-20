@@ -149,6 +149,7 @@ MonoBehaviour:
   onQuizz: 0
   myTurn: 0
   steps: 0
+  isMoving: 0
   canUseItem: 1
   hasDoubleDice: 0
 --- !u!114 &4163607321230567988

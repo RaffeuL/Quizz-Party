@@ -25,7 +25,7 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
     public bool myTurn = false;
     int routePosition = -1;
     public int steps;
-    bool isMoving;
+    public bool isMoving;
 
     private int diceTimer;
     private bool isRolling;
@@ -187,7 +187,8 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         //Pergunta Fácil
         if(tileColor == Color.green)
         {
-            EventsManagement.Instance.StartEvent(0);
+            int eventId = Random.Range(0,2);
+            EventsManagement.Instance.StartEvent(eventId);
             //GameSystem.Instance.StartQuizz("Fácil");
             //onQuizz = true;
             return true;
@@ -195,7 +196,8 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         //Pergunta Média
         if(tileColor == Color.yellow)
         {
-            EventsManagement.Instance.StartEvent(0);
+            int eventId = Random.Range(0,2);
+            EventsManagement.Instance.StartEvent(eventId);
             //GameSystem.Instance.StartQuizz("Média");
             //onQuizz = true;
             return true;
@@ -204,7 +206,8 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         //Pergunta Dificil
         if(tileColor == Color.red)
         {
-            EventsManagement.Instance.StartEvent(0);
+            int eventId = Random.Range(0,2);
+            EventsManagement.Instance.StartEvent(eventId);
             //GameSystem.Instance.StartQuizz("Difícil");
             //onQuizz = true;
             return true;
@@ -217,8 +220,8 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
             // 0 - Volta o mesmo numero de casas que o dado
             // 1 - Preso por uma rodada
             // 2 - Não sei
-            //int eventId = Random.Range(0,3);
-            EventsManagement.Instance.StartEvent(0);
+            int eventId = Random.Range(0,2);
+            EventsManagement.Instance.StartEvent(eventId);
             return true;
         }
 

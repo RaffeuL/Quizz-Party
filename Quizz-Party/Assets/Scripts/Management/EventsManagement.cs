@@ -20,16 +20,23 @@ public class EventsManagement : MonoBehaviourPun
 
     public void StartEvent(int eventId)
     {
+        
         switch (eventId)
         {
             case 0: //Voltar casas
-            PlayerPiece.me.StartReverseMove();
+                Debug.Log("Dado Reverso");
+                PlayerPiece.me.StartReverseMove();
             break;
+
             case 1:
-            Debug.Log("Perder a vez");
+                Debug.Log("Perdeu a Vez");
+                PlayerPiece.me.isMoving = false;
+                PlayerPiece.me.ResetItensProps();
+                GameSystem.Instance.photonView.RPC("NextPlayer", RpcTarget.All);
             break;
+
             case 2:
-            Debug.Log("Não sei");
+                Debug.Log("Não sei");
             break;
         }
     }
