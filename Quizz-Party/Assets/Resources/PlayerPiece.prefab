@@ -152,6 +152,7 @@ MonoBehaviour:
   isMoving: 0
   canUseItem: 1
   hasDoubleDice: 0
+  hasCursedDice: 0
 --- !u!114 &4163607321230567988
 MonoBehaviour:
   m_ObjectHideFlags: 0

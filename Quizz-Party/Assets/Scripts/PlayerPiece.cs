@@ -35,6 +35,7 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
     public bool canUseItem = true;
     private bool inventoryIsOpen = false;
     public bool hasDoubleDice = false;
+    public bool hasCursedDice = false;
     #endregion
 
     [PunRPC]
@@ -106,7 +107,7 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         isRolling = true;
         while(diceTimer > 0)
         {
-            steps = Random.Range(1,7);
+            var cursed = (me.hasCursedDice == true) ? steps = Random.Range(1,3) : steps = Random.Range(1,7);
             GameSystem.Instance.photonView.RPC("UpdadeDiceUI", RpcTarget.All, steps);
             yield return new WaitForSeconds(0.1f);
             diceTimer--;
