@@ -92,8 +92,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
     
     public void UseItemWarning(string itemName)
     {
-        photonView.RPC("UseItemWarningMultiplayer", RpcTarget.All, itemName);
-        
+        photonView.RPC("UseItemWarningMultiplayer", RpcTarget.All, itemName);  
     }
 
     [PunRPC]

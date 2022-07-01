@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 
-public class EventsManagement : MonoBehaviourPun
+public class EventsManagement : MonoBehaviourPunCallbacks
 {
-
     public static EventsManagement Instance {get; private set;}
+    [SerializeField] public GameObject MenuPlayerList;
     private void Awake()
     {
         if(Instance != null && Instance != this)
@@ -40,6 +41,14 @@ public class EventsManagement : MonoBehaviourPun
             break;
         }
     }
+
+    [PunRPC]
+    void CursePlayer(string playerName)
+    {
+        Debug.LogError("Dado amaldiçoado no player: " + playerName);
+        if(PlayerPiece.me.playerName == playerName) PlayerPiece.me.hasCursedDice = true;
+    }
+
 
 }
 
