@@ -2,22 +2,22 @@
     "easy":
     [
         {
-            "question": "O que é um Switch?",
+            "question": "DHCP é um protocolo da camada de aplicação da suíte TCP/IP que permite a configuração dinâmica de máquinas numa rede local. Oferece as seguintes funcionalidades, EXCETO, ",
             "answers":
             [
                 {
-                    "answer":"Não sei"
+                    "answer":"informar a localização dos gateways da rede local"
                 },
                 {
 
-                    "answer":"Um switch é um dispositivo que simplesmente conecta todos os elementos da sua rede."
+                    "answer":"manter o sincronismo entre os relógios das máquinas da rede local"
                 },
                 {
                     
-                    "answer":"Cabo de conexão"
+                    "answer":"informar a localização dos servidores de DNS da rede "
                 },
                 {
-                    "answer":"Um console da Nintendo"
+                    "answer":"atribuir endereços IP às máquinas da rede local"
                 }
             ],
     
@@ -25,22 +25,22 @@
         },
 
         {
-            "question": "Pergunta Fácil 2",
+            "question": "O TCP é um protocolo que trabalha na camada de",
             "answers":
             [
                 {
-                    "answer":"errada"
+                    "answer":"Aplicação"
                 },
                 {
 
-                    "answer":"errada"
+                    "answer":"Rede"
                 },
                 {
                     
-                    "answer":"certa"
+                    "answer":"Transporte"
                 },
                 {
-                    "answer":"errada"
+                    "answer":"Enlace"
                 }
             ],
     
@@ -48,94 +48,250 @@
         },
 
         {
-            "question": "Pergunta Fácil 3",
+            "question": "Um dispositivo de interconexão de redes que opera na camada 3 do modelo OSI/ISO é :",
             "answers":
             [
                 {
-                    "answer":"errada"
+                    "answer":"roteador"
                 },
                 {
 
-                    "answer":"errada"
+                    "answer":"repetidor"
                 },
                 {
                     
-                    "answer":"certa"
+                    "answer":"modem"
                 },
                 {
-                    "answer":"errada"
+                    "answer":"switch"
+                }
+            ],
+    
+            "correct": 0
+        },
+
+        {
+            "question": "Dentre os equipamentos de interconexão de redes de computadores, os dispositivos que executam filtro de tráfego são:",
+            "answers":
+            [
+                {
+                    "answer":"repeater, router e bridge"
+                },
+                {
+
+                    "answer":"switch, repeater e hub"
+                },
+                {
+                    
+                    "answer":"bridge, hub e repeater"
+                },
+                {
+                    "answer":"router, bridge e switch"
+                }
+            ],
+    
+            "correct": 3
+        },
+
+        {
+            "question": "Com relação a redes de computadores, um fino filamento contínuo de vidro com uma cobertura de proteção, que pode ser usado para conectar longas distâncias, constitui um cabo de",
+            "answers":
+            [
+                {
+                    "answer":"infravermelhos"
+                },
+                {
+
+                    "answer":"microondas"
+                },
+                {
+                    
+                    "answer":"fibra ótica"
+                },
+                {
+                    "answer":"par trançado"
                 }
             ],
     
             "correct": 2
         },
-
         {
-            "question": "Pergunta Fácil 4",
+            "question": "Os tipos básicos de topologia física das redes de computadores são ",
             "answers":
             [
                 {
-                    "answer":"errada"
+                    "answer":"barramento e anel, apenas"
                 },
                 {
 
-                    "answer":"errada"
+                    "answer":"anel e estrela, apenas"
                 },
                 {
                     
-                    "answer":"certa"
+                    "answer":"barramento, anel e estrela, apenas"
                 },
                 {
-                    "answer":"errada"
+                    "answer":"barramento, árvore e híbrida, apenas"
                 }
             ],
     
             "correct": 2
         },
-
         {
-            "question": "Pergunta Fácil 5",
+            "question": "A técnica de controle de acesso ao meio baseada em contenção utilizada pela Ethernet ",
             "answers":
             [
                 {
-                    "answer":"errada"
+                    "answer":"CSMA/CA"
                 },
                 {
 
-                    "answer":"errada"
+                    "answer":"SMTP"
                 },
                 {
                     
-                    "answer":"certa"
+                    "answer":"CDMA"
                 },
                 {
-                    "answer":"errada"
+                    "answer":"CSMA/CD"
                 }
             ],
     
-            "correct": 2
+            "correct": 3
+        },
+        {
+            "question": "Os protocolos da pilha TCP/IP: HTTP, FTP, NFS e SMTP, operam na camada OSI de",
+            "answers":
+            [
+                {
+                    "answer":"Rede"
+                },
+                {
+
+                    "answer":"Transporte"
+                },
+                {
+                    
+                    "answer":"Sessão"
+                },
+                {
+                    "answer":"Aplicação"
+                }
+            ],
+    
+            "correct": 3
+        },
+        {
+            "question": "Em relação ao protocolo TCP/IP é correto afirmar que ",
+            "answers":
+            [
+                {
+                    "answer":"um endereço IP especifica um computador individual"
+                },
+                {
+
+                    "answer":"um endereço IP não especifica uma conexão com uma rede"
+                },
+                {
+                    
+                    "answer":"os endereços internet podem ser usados para se referir a redes"
+                },
+                {
+                    "answer":"os endereços internet podem ser usados para se referir a redes e a hosts individuais"
+                }
+            ],
+    
+            "correct": 3
+        },
+        {
+            "question": "Em relação ao OSI, o modelo TCP/IP não contempla as camadas de",
+            "answers":
+            [
+                {
+                    "answer":"apresentação e de sessão"
+                },
+                {
+
+                    "answer":"aplicação e de apresentação"
+                },
+                {
+                    
+                    "answer":"transporte e de aplicação"
+                },
+                {
+                    "answer":"aplicação e de sessão"
+                }
+            ],
+    
+            "correct": 0
         }
     ],
 
     "medium":
     [
         {
-            "question": "Pergunta Média 1",
+            "question": "Considerando o início em zero, o sistema de numeração hexadecimal tem a mesma representação do sistema decimal até o número",
             "answers":
             [
                 {
-                    "answer":"certa"
+                    "answer":"1"
                 },
                 {
 
-                    "answer":"errada"
+                    "answer":"9"
                 },
                 {
                     
-                    "answer":"errada"
+                    "answer":"10"
                 },
                 {
-                    "answer":"errada"
+                    "answer":"16"
+                }
+            ],
+    
+            "correct": 1
+        },
+
+        {
+            "question": "Gerar o quadro Ethernet, pegando os dados passados pela camada imediatamente superior a ela (LLC) e acrescentando um cabeçalho a esses dados, é função primordial da camada",
+            "answers":
+            [
+                {
+                    "answer":"física"
+                },
+                {
+
+                    "answer":"de controle de acesso ao meio"
+                },
+                {
+                    
+                    "answer":"de apresentação"
+                },
+                {
+                    "answer":"de aplicação"
+                }
+            ],
+    
+            "correct": 1
+        },
+
+        {
+            "question": "O protocolo que permite o gerenciamento centralizado dos endereços IP (e de outros parâmetros como o endereço do servidor DNS, a máscara da rede e o default gateway) é ",
+            "answers":
+            [
+                {
+                    "answer":"DHCP"
+                },
+                {
+
+                    "answer":"ARP"
+                },
+                {
+                    
+                    "answer":"NDIS"
+                },
+                {
+                    "answer":"PPP"
                 }
             ],
     
@@ -143,117 +299,181 @@
         },
 
         {
-            "question": "Pergunta Média 2",
+            "question": "Caso um roteador não consiga passar adiante um datagrama recebido (por congestionamento demais ou por zeragem do TTL do datagrama, por exemplo), ele precisa informar ao transmissor do datagrama que ocorreu um erro. O mecanismo usado para tal pelos roteadores é o uso do protocolo:",
             "answers":
             [
                 {
-                    "answer":"certa"
+                    "answer":"SNMP"
                 },
                 {
 
-                    "answer":"errada"
+                    "answer":"IGMP"
                 },
                 {
                     
-                    "answer":"errada"
+                    "answer":"ICMP"
                 },
                 {
-                    "answer":"errada"
+                    "answer":"SMTP"
+                }
+            ],
+    
+            "correct": 2
+        },
+
+        {
+            "question": "Considerando o modelo TANENBAUM (4 camadas) de referência TCP/IP, os protocolos FTP, DNS e UDP pertencem, respectivamente, às camadas:",
+            "answers":
+            [
+                {
+                    "answer":"aplicação, transporte e inter-redes"
+                },
+                {
+
+                    "answer":"aplicação, aplicação e transporte"
+                },
+                {
+                    
+                    "answer":"transporte, inter-redes e física"
+                },
+                {
+                    "answer":"transporte, aplicação e aplicação"
+                }
+            ],
+    
+            "correct": 1
+        },
+        {
+            "question": "O meio de transmissão a ser expressivamente considerado, quando a interferência se constituir num problema crítico de um projeto de rede, é",
+            "answers":
+            [
+                {
+                    "answer":"cabo coaxial"
+                },
+                {
+
+                    "answer":"par trançado CAT5e"
+                },
+                {
+                    
+                    "answer":"par trançado CAT6"
+                },
+                {
+                    "answer":"fibra óptica"
+                }
+            ],
+    
+            "correct": 3
+        },
+        {
+            "question": "É um ponto de acesso wireless que pode interligar os micros da rede cabeada aos micros conectados à rede wireless, criando uma única rede: ",
+            "answers":
+            [
+                {
+                    "answer":"hub"
+                },
+                {
+
+                    "answer":"bridge"
+                },
+                {
+                    
+                    "answer":"switch"
+                },
+                {
+                    "answer":"roteador"
+                }
+            ],
+    
+            "correct": 1
+        },
+        {
+            "question": "A arquitetura Open Systems Interconnection - OSI da ISO constitui uma referência para o funcionamento das redes de computadores. No contexto desse modelo, a camada que se refere às especificações de hardware é denominada:",
+            "answers":
+            [
+                {
+                    "answer":"física"
+                },
+                {
+
+                    "answer":"rede"
+                },
+                {
+                    
+                    "answer":"enlace"
+                },
+                {
+                    "answer":"transporte"
                 }
             ],
     
             "correct": 0
         },
-
         {
-            "question": "Pergunta Média 3",
+            "question": "Em relação à tecnologia Ethernet utilizada para redes locais, é correto afirmar que:",
             "answers":
             [
                 {
-                    "answer":"certa"
+                    "answer":"atualmente consiste de cabos coaxiais trançados aos quais todos os computadores são conectados."
                 },
                 {
 
-                    "answer":"errada"
+                    "answer":"originalmente consistia de par trançado ao qual apenas um dos computadores era conectado"
                 },
                 {
                     
-                    "answer":"errada"
+                    "answer":"permite que a comunicação seja feita com fios de cobre devidamente blindados, distintos dos fios usados para conectar telefones. "
                 },
                 {
-                    "answer":"errada"
+                    "answer":"permite que a comunicação seja feita com fios de cobre convencionais não blindados, semelhantes aos fios usados para conectar telefones."
                 }
             ],
     
-            "correct": 0
+            "correct": 3
         },
-
         {
-            "question": "Pergunta Média 4",
+            "question": "Para uma estação determinar um endereço Ethernet, a partir de um endereço IP, que mensagem deve transmitir? ",
             "answers":
             [
                 {
-                    "answer":"certa"
+                    "answer":"MAC Query"
                 },
                 {
 
-                    "answer":"errada"
+                    "answer":"RARP Request"
                 },
                 {
                     
-                    "answer":"errada"
+                    "answer":"ICMP Source Quench"
                 },
                 {
-                    "answer":"errada"
+                    "answer":"ARP Request"
                 }
             ],
     
-            "correct": 0
-        },
-
-        {
-            "question": "Pergunta Média 5",
-            "answers":
-            [
-                {
-                    "answer":"certa"
-                },
-                {
-
-                    "answer":"errada"
-                },
-                {
-                    
-                    "answer":"errada"
-                },
-                {
-                    "answer":"errada"
-                }
-            ],
-    
-            "correct": 0
+            "correct": 3
         }
     ],
 
     "hard":
     [
         {
-            "question": "Pergunta Dificil 1",
+            "question": "Com relação à Internet, a intranet e a redes de computadores, assinale a opção correta",
             "answers":
             [
                 {
-                    "answer":"errada"
+                    "answer":"LAN é o nome dado a redes que conectam computadores localizados a distâncias muito longas, da ordem de milhares de quilômetros"
                 },
                 {
 
-                    "answer":"certa"
+                    "answer":"Diversas redes locais, assim como a Internet, utilizam o protocolo de comunicação TCP/IP"
                 },
                 {
                     
-                    "answer":"errada"
+                    "answer":"Nas redes Wi-Fi, todos os computadores estão conectados por meio de fibras ópticas, utilizando um servidor denominado hub"
                 },
                 {
-                    "answer":"errada"
+                    "answer":"O serviço denominado Telnet permite o acesso de páginas web contendo texto, hiperlinks e elementos gráficos, de forma similar às páginas visualizadas no Internet Explorer e no Mozilla Firefox."
                 }
             ],
     
@@ -261,95 +481,207 @@
         },
 
         {
-            "question": "Pergunta Dificil 2",
+            "question": "Para atender às necessidades atuais das redes de computadores com acesso à internet, é comum dotá-las de equipamentos de interconexão com as seguintes características: I. dispositivos que filtram e encaminham frames com base no endereço físico; II. dispositivos que filtram e encaminham frames com base no endereço lógico. Esses equipamentos são conhecidos, respectivamente, como:",
             "answers":
             [
                 {
-                    "answer":"errada"
+                    "answer":"router e bridge"
                 },
                 {
 
-                    "answer":"certa"
+                    "answer":"bridge e hub"
                 },
                 {
                     
-                    "answer":"errada"
+                    "answer":"hub e gateway"
                 },
                 {
-                    "answer":"errada"
+                    "answer":"switch e router"
                 }
             ],
     
-            "correct": 1
+            "correct": 3
         },
 
         {
-            "question": "Pergunta Dificil 3",
+            "question": "No modelo de referência TCP/IP, os protocolos IP, TCP e também aquele cujo objetivo é organizar máquinas em domínios e mapear nomes de hosts em ambientes IP, são, respectivamente, partes integrantes das camadas",
             "answers":
             [
                 {
-                    "answer":"errada"
+                    "answer":"Inter-Redes, de Aplicação e de Transporte"
                 },
                 {
 
-                    "answer":"certa"
+                    "answer":"Host/Rede, Inter-Redes e de Transporte"
                 },
                 {
                     
-                    "answer":"errada"
+                    "answer":"Inter-Redes, Host/Rede e de Aplicação"
                 },
                 {
-                    "answer":"errada"
+                    "answer":"Inter-Redes, de Transporte e de Aplicação"
                 }
             ],
     
-            "correct": 1
+            "correct": 3
         },
         
         {
-            "question": "Pergunta Dificil 4",
+            "question": "Segundo Tanenbaum, o modelo de referência TCP/IP não tem camada correspondente no modelo OSI às camadas de ",
             "answers":
             [
                 {
-                    "answer":"errada"
+                    "answer":"sessão e de apresentação"
                 },
                 {
 
-                    "answer":"certa"
+                    "answer":"enlace e física"
                 },
                 {
                     
-                    "answer":"errada"
+                    "answer":"rede e de transporte"
                 },
                 {
-                    "answer":"errada"
+                    "answer":"rede e de aplicação"
+                }
+            ],
+    
+            "correct": 0
+        },
+
+        {
+            "question": "Na comunicação TCP/IP, usando o protocolo TCP para o transporte de dados, têm-se: I. Serviço orientado por conexão; uma sessão é estabelecida entre os hosts. II. Garantia da entrega através do uso de confirmações e entrega sequenciada dos dados. III. Maior rapidez que o UDP, necessitando de baixa sobrecarga e podendo oferecer suporte à comunicação ponto a ponto e ponto a vários pontos. É correto o que consta em:",
+            "answers":
+            [
+                {
+                    "answer":"I e II, apenas"
+                },
+                {
+
+                    "answer":"I e III, apenas"
+                },
+                {
+                    
+                    "answer":"II e III, apenas"
+                },
+                {
+                    "answer":"I, II e III"
+                }
+            ],
+    
+            "correct": 0
+        }
+        ,
+
+        {
+            "question": "A arquitetura OSI de 7 camadas (1. Física, 2. Enlace, 3. Rede, 4. Transporte, 5. Sessão, 6. Apresentação e 7. Aplicação) pode funcionalmente representar um sistema de comunicação dividido em três partes: redes (conectividade), transporte (ligação entre redes e aplicação) e aplicação (programas que utilizam a rede). As camadas que representam as três partes são: ",
+            "answers":
+            [
+                {
+                    "answer":"Redes (camadas 1 e 2), Transporte (camadas 3 e 4) e Aplicação (camadas 5, 6 e 7)"
+                },
+                {
+
+                    "answer":"Redes (camadas 1, 2 e 3), Transporte (camada 4) e Aplicação (camadas 5, 6 e 7)"
+                },
+                {
+                    
+                    "answer":"Redes (camadas 1 e 2), Transporte (camadas 3, 4 e 5) e Aplicação (camadas 6 e 7)"
+                },
+                {
+                    "answer":"Redes (camadas 1, 2 e 3), Transporte (camadas 4, 5 e 6) e Aplicação (camada 7)"
                 }
             ],
     
             "correct": 1
         },
-
         {
-            "question": "Pergunta Dificil 5",
+            "question": "O protocolo TCP, I) executa o empacotamento, fragmentando os dados em pacotes menores, numerando-os, garantindo que cada pacote seja entregue no destino em segurança e na ordem adequada. II) pertence à camada de transporte. III) executa o endereçamento e o roteamento. IV) pertence à camada de rede. Está correto o que se afirma APENAS em:",
             "answers":
             [
                 {
-                    "answer":"errada"
+                    "answer":"III e IV"
                 },
                 {
 
-                    "answer":"certa"
+                    "answer":"I e IV"
                 },
                 {
                     
-                    "answer":"errada"
+                    "answer":"I e II"
                 },
                 {
-                    "answer":"errada"
+                    "answer":"II e III"
                 }
             ],
     
-            "correct": 1
+            "correct": 2
+        },
+        {
+            "question": "Uma mensagem broadcast é enviada pelo software TCP/IP a todos os computadores de uma sub-rede para obter o endereço correto da camada de enlace de dados (leva o endereço IP e questiona pelo endereço da camada de enlace de dados). Essa mensagem é uma solicitação especialmente formatada que utiliza o protocolo ",
+            "answers":
+            [
+                {
+                    "answer":"UDP"
+                },
+                {
+
+                    "answer":"SSL"
+                },
+                {
+                    
+                    "answer":"DNS"
+                },
+                {
+                    "answer":"ARP"
+                }
+            ],
+    
+            "correct": 3
+        },
+        {
+            "question": "Na arquitetura TCP/IP, diversas camadas de software interagem somente com as camadas acima e abaixo, por meio de seus respectivos protocolos. Numa comunicação típica dessa arquitetura a utilização dos protocolos ocorre na sequência ",
+            "answers":
+            [
+                {
+                    "answer":"PPP, TCP, IP, FTP"
+                },
+                {
+
+                    "answer":"TCP, IP, FTP, PPP"
+                },
+                {
+                    
+                    "answer":"IP, PPP, FTP, TCP"
+                },
+                {
+                    "answer":"FTP, TCP, IP, PPP"
+                }
+            ],
+    
+            "correct": 3
+        },
+        {
+            "question": "Se o sistema IPv4 estiver sendo usado, cada máquina conectada a uma rede TCP/IP receberá um endereço lógico no formato a.b.c.d., onde cada letra equivale a um número de",
+            "answers":
+            [
+                {
+                    "answer":"2 bits"
+                },
+                {
+
+                    "answer":"4 bits"
+                },
+                {
+                    
+                    "answer":"8 bits"
+                },
+                {
+                    "answer":"16 bits"
+                }
+            ],
+    
+            "correct": 2
         }
     ]
 }

@@ -126,6 +126,12 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         isMoving = true;
         while(steps > 0)
         {
+            if(routePosition == currentRoute.childTileTransformList.Count - 1)
+        {
+            isMoving = false;
+            GameSystem.Instance.photonView.RPC("EndGame", RpcTarget.All, me.playerName);
+            break;
+        }
             Vector3 nextPos = currentRoute.childTileTransformList[routePosition + 1].position;
             
             while(MoveToNextTile(nextPos)){yield return null;}
@@ -188,29 +194,23 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
         //Pergunta Fácil
         if(tileColor == Color.green)
         {
-            int eventId = Random.Range(0,2);
-            EventsManagement.Instance.StartEvent(eventId);
-            //GameSystem.Instance.StartQuizz("Fácil");
-            //onQuizz = true;
+            GameSystem.Instance.StartQuizz("Fácil");
+            onQuizz = true;
             return true;
         }
         //Pergunta Média
         if(tileColor == Color.yellow)
         {
-            int eventId = Random.Range(0,2);
-            EventsManagement.Instance.StartEvent(eventId);
-            //GameSystem.Instance.StartQuizz("Média");
-            //onQuizz = true;
+            GameSystem.Instance.StartQuizz("Média");
+            onQuizz = true;
             return true;
         }
 
         //Pergunta Dificil
         if(tileColor == Color.red)
         {
-            int eventId = Random.Range(0,2);
-            EventsManagement.Instance.StartEvent(eventId);
-            //GameSystem.Instance.StartQuizz("Difícil");
-            //onQuizz = true;
+            GameSystem.Instance.StartQuizz("Difícil");
+            onQuizz = true;
             return true;
         }
 
@@ -226,7 +226,7 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
             return true;
         }
 
-        return false;    
+        return false;
     }
 
     public void CallInventory()

@@ -16,7 +16,6 @@ public class QuestionReader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         //StartCoroutine(GetData());
         
         questionsInJson = JsonUtility.FromJson<Questions>(jsonFile.text);

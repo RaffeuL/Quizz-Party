@@ -15,6 +15,9 @@ public class GameSystem : MonoBehaviourPunCallbacks
     [SerializeField] private Button _startGame;
     [SerializeField] private QuizzManagement _quizzManagement;
     [SerializeField] private DiceRoller _dice;
+    [SerializeField] private GameObject _winnerWarning;
+    [SerializeField] private Text _winnerName;
+
     #endregion
 
     #region Lists
@@ -54,6 +57,7 @@ public class GameSystem : MonoBehaviourPunCallbacks
         
         CreateQuizzTiles();  
         _quizzManagement.gameObject.SetActive(false);
+        _winnerWarning.gameObject.SetActive(false);
         playerInventory.SetActive(false);
         _startGame.interactable = NetworkManager.Instance.MasterClient();
     }
@@ -236,4 +240,11 @@ public class GameSystem : MonoBehaviourPunCallbacks
     }
           
     #endregion
+
+    [PunRPC]
+    void EndGame(string playerName)
+    {
+        _winnerWarning.gameObject.SetActive(true);
+        _winnerName.text = "Ganhador(a): " + playerName;
+    }
 }
