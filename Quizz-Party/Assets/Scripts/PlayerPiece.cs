@@ -113,7 +113,7 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
             diceTimer--;
         }
         isRolling = false;
-        if(hasDoubleDice) steps *= 2;
+        if(me.hasDoubleDice) steps *= 2;
         var condition = (reverse == true)  ?  StartCoroutine(MoveReverse()) : StartCoroutine(Move());
     }
 
@@ -220,7 +220,6 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
             // Gera um evento aleatório entre
             // 0 - Volta o mesmo numero de casas que o dado
             // 1 - Preso por uma rodada
-            // 2 - Não sei
             int eventId = Random.Range(0,2);
             EventsManagement.Instance.StartEvent(eventId);
             return true;
@@ -239,6 +238,7 @@ public class PlayerPiece : MonoBehaviourPunCallbacks
     {
         canUseItem = true;
         hasDoubleDice = false;
+        hasCursedDice = false;
     }
 
 }

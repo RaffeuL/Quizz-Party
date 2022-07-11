@@ -235,7 +235,6 @@ public class GameSystem : MonoBehaviourPunCallbacks
     {
         PlayerPiece.me.onQuizz = false;
         PlayerPiece.me.answeredRight = false;
-        PlayerPiece.me.ResetItensProps();
         _quizzManagement.gameObject.SetActive(false);
     }
           
